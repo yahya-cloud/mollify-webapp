@@ -1,0 +1,27 @@
+.registerContainer{
+    width: 100vw;
+    height: min-content;
+    padding: 8rem 0rem 25rem 0rem;
+}
+
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button{
+    background-color: transparent;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-blue2);
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.button:active, .button:visited , .button:focus{
+    outline: none;
+    border: none;
+}

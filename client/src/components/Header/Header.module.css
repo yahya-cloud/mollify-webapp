@@ -1,0 +1,44 @@
+header{
+    grid-column: 1 / -1;
+    background-color: var(--color-blue);
+    padding: 0rem 5rem;
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    font-family: var(--font-logo);
+    font-size: 3.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--color-green1);
+}
+
+.headerControls{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.personImg{
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    background-color: #ebebeb;
+}
+
+.headerControls h2{
+    font-size: 2rem;
+    color: var(--color-grey2);
+    margin-right: 2rem;
+}
+
+.headerControls  div{
+    margin-right: 2.5rem ;
+}
+
+.personControls{
+    position: relative;
+    display: flex;
+    align-items: center;
+}

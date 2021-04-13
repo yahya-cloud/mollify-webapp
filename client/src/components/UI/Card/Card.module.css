@@ -1,0 +1,57 @@
+.Card{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    width: 100%;
+    height: min-content;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    padding-right: 0rem;
+}
+
+.cardComponent{
+    width: 100%;
+    margin: 0rem 2rem;
+    display: flex;
+}
+
+.btnBox{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btnBox > * {
+    flex: 1;
+}
+
+.cardPhoto{
+    width: 20rem;
+    height: 18rem;
+    object-fit: cover;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+
+.cardInfo{
+    display: flex;
+    font-family: var(--font-number);
+    margin: 1.5rem;
+    flex: 1;
+}
+
+.cardInfo h3{
+    font-size: 1.6rem;
+    font-family: inherit;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.cardInfo p{
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--color-grey2);
+    
+}
+

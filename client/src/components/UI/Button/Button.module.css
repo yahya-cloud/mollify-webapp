@@ -1,0 +1,16 @@
+.buttonHeader{
+    padding: .8rem 3rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+
+.btnCard{
+    margin: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 1rem 0rem;
+    border-radius: 5px;
+    color: var(--color-white);
+}

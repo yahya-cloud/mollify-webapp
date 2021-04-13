@@ -1,0 +1,11 @@
+.mainContainer{
+    display: grid;
+    grid-template-columns: 15vw 85vw;
+    grid-template-rows: 12vh 88vh;
+}
+
+.routingContainer{
+    position: relative;
+    padding: 2rem 3rem;
+    overflow-y: scroll;
+}

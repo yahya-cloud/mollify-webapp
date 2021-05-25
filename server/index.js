@@ -3,6 +3,9 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import authRoutes from './routes/auth.js';
+import patientRoutes from './routes/patient.js';
+import doctorRoutes from './routes/doctor.js';
+import commonRoutes from './routes/common.js';
 
 
 const app = express();
@@ -12,6 +15,10 @@ app.use(cors());
 
 //routes
 app.use(authRoutes);
+app.use(patientRoutes);
+app.use(doctorRoutes);
+app.use(commonRoutes);
+
 
 
 //CONNECTION URL FROM MONGOOSE

@@ -1,55 +1,47 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
-import {useHistory,Route, Switch } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {Route, useHistory} from 'react-router-dom';
+import decode from 'jwt-decode';
+import {getUser, logOut} from './store/actions/auth';
 
 
 import Register from './components/Pages/Register/Register';
-import Dashboard from './components/Pages/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Requests from './components/Pages/Requests/Requests';
-import SettingsPage from './components/Pages/SettingsPage/SettingsPage';
-import OurWorking from './components/Pages/OurWorking/OurWorking';
-import Navigate from './components/Pages/Navigate/Navigate';
+import RoutingContainer from './components/RoutingContainer/RoutingContainer';
+import Modal from './components/UI/Modal/Modal';
 
-import classes from './App.module.css';
+
 
 const App = () => {
 
-    const user =  useSelector(state => state);
+    const {user} =  useSelector(state => state);
+    const token = localStorage.getItem('userToken');
+    const dispatch = useDispatch();
     const history = useHistory();
-    console.log(user);
+
+    useEffect(() => {
+        if(token){
+            const decodedToken = decode(token);
+            if(decodedToken.exp * 1000 < new Date().getTime()){
+                dispatch(logOut(history));
+            }else{
+                dispatch(getUser(decodedToken.email));
+            }
+        }
+    },[dispatch, token, history])
 
 
     return (
         <div className='appContainer'>
-        {!user.userData ? <Route  path="/" ><Register /></Route> :
-       <div className={classes.mainContainer}>
+        <Modal />
+        {!user ? <Route  path="/" ><Register /></Route> :
+       <div className='mainContainer'>
        <Header />
-        <Navbar />
-        <div className={classes.routingContainer}>
-        <Switch>           
-            <Route  path="/patientRequest"><Requests /></Route>
-            <Route  path="/settings"><SettingsPage /></Route>
-            <Route  path="/ourWorking"> <OurWorking/> </Route>
-            <Route  path="/navigate"> <Navigate/> </Route>
-          
-            <Route  path="/" >
-        
-            {user.userData.userType === 'doctor' ?
-            <Dashboard />
-            :
-            <Requests />
-            }
-            </Route> :
-
-        </Switch>
-        </div>
+       <Navbar />
+       <RoutingContainer />
         </div>
         }
-
-
-      
         </div>
     )
 }

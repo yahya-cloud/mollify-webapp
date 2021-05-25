@@ -39,7 +39,7 @@ const Form = (props) => {
        if(photoData){updatedForm['photo'].value = photoData;}
        else{
         updatedForm[e.target.name].value = e.target.value;
-        if(e.target.name === 'userType'){ if(e.target.value === 'doctor'){updatedForm = {...updatedForm, pricing:{type:'text', name:'pricing', value:''}}}else{updatedForm = {...updatedForm}}}
+        if(e.target.name === 'userType'){ if(e.target.value === 'doctor'){updatedForm = {...updatedForm, price:{type:'text', name:'price', value:''}}}else{updatedForm = {...updatedForm}}}
        }
        setInputData({...updatedForm})
     }
@@ -60,8 +60,6 @@ const Form = (props) => {
 
     return (
     <form className="mainForm" onSubmit={(e) => submitHandler(e)}>
-
-
      {formInputs.map(el => {
          return (<Input
          type={el.type}
@@ -70,8 +68,6 @@ const Form = (props) => {
          value={el.value}
          />)
      })}
-
-
 
     <Button btnType="btnCard" btnColor="btnGreen">Edit Details</Button>
     </form>

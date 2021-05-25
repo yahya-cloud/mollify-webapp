@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useLocation} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
 
@@ -13,13 +13,14 @@ import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 
 
 const Navbar = () => {
-    const {userData} =  useSelector(state => state);
-
+    const {user} =  useSelector(state => state);
+    const location = useLocation();
+    // console.log(location.pathname.slice(1,9).toString());
     return (
         <div className={`${classes.navbar}`}>
-        {userData.userType === 'doctor' ? 
+        {user.userType === 'doctor' ? 
         <>
-        <NavLink exact activeClassName={classes.navItemActive} className={classes.navItem} to="/dashboard"> 
+        <NavLink exact activeClassName={classes.navItemActive} className={classes.navItem} to="/" active> 
         <DashboardOutlinedIcon className={classes.navIcon} />   Dashboard
         </NavLink>
 
@@ -33,13 +34,17 @@ const Navbar = () => {
         <DashboardOutlinedIcon className={classes.navIcon} />   Doctors
         </NavLink>
 
-        <NavLink activeClassName={classes.navItemActive} className={classes.navItem} to="/acceptedRequest"> 
+        <NavLink activeClassName={classes.navItemActive} className={classes.navItem} to="/acceptedRequests"> 
         <PeopleAltOutlinedIcon className={classes.navIcon} />  Accepted Requests
         </NavLink>
         </>
         }
 
-            <NavLink activeClassName={classes.navItemActive} className={classes.navItem} to="/navigate"> 
+            <NavLink 
+            activeClassName={classes.navItemActive}
+            className={classes.navItem}
+            isActive={() => location.pathname.slice(1,9) === 'navigate' }
+            to="/navigate/:personAddress"> 
             <NavigationOutlinedIcon className={classes.navIcon} />  Navigation
             </NavLink>
 

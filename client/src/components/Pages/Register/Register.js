@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
 
 import Form from '../../Form/Form';
 import {signUp, signIn} from '../../../store/actions/auth';
+import {showLoader} from '../../../store/actions/modal';
 
 import classes from './Register.module.css';
 
@@ -17,7 +17,7 @@ const Register = () => {
         if(isSignUp){
         dispatch(signUp(body));
         }else{
-            dispatch(signIn(body))
+            dispatch(signIn(body));
         }
     };
 

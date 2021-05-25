@@ -129,3 +129,9 @@
   font-weight: 400;
   letter-spacing: 2px;
 }
+
+.mainContainer{
+  display: grid;
+  grid-template-columns: 15vw 85vw;
+  grid-template-rows: 12vh 88vh;
+}

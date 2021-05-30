@@ -26,10 +26,27 @@ app.use(commonRoutes);
 
 
 //Server static assets if in production
+<<<<<<< HEAD
+// if(process.env.NODE_ENV ==='production'){
+
+//     //static folder
+//     app.user(express.static('../client/build'))
+
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+//     })
+// }
+app.get('/', (req, res) => { res.send('Hello from Express!')})
+
+
+//CONNECTION URL FROM MONGOOSE
+const CONNECTION_URL = process.env.CONNECTION_URL;
+=======
 if(process.env.NODE_ENV ==='production'){
 
     //static folder
     app.user(express.static('../client/build'))
+>>>>>>> 1f4c8305fdc47042b95624bf95abd88e7295cfbf
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
@@ -43,4 +60,5 @@ mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: tru
 .then(() => app.listen(PORT, () => console.log('server running on port '+ PORT)))
 .catch((err) => console.log(err))
 
-mongoose.set('useFindAndModify', false);
+mongoose.set('useFindAndModify', false)
+

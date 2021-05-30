@@ -8,7 +8,7 @@ import PatientModel from '../models/patient.js';
 import {searchModels} from './common.js';
 dotenv.config();
 
-const secret = process.env.secret;
+const secret = process.env.SECRET;
 
 export const signIn = async (req, res) => {
   try {

@@ -56,7 +56,7 @@ const MobileNav = (props) => {
           <NavLink
           onClick={() =>  props.mobileNavHandler()}
           activeClassName="mobileNavItem--active" 
-          to="/acceptedRequests" >Accepted Requests</NavLink>
+          to="/acceptedRequests" >Accepted Request</NavLink>
       </div>
       </>
     }

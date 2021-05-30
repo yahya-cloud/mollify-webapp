@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import _ from 'lodash';
 
 import checkValidity from './checkvalidity';
 
@@ -11,6 +12,7 @@ const Form = (props) => {
 
     const  [inputData, setInputData] = useState({});
     const [formIsValid, setFormIsValid] = useState(false);
+    const [priceInput, setPriceInput] = useState(false);
     
     useEffect(() => {
         if(!props.signup){
@@ -119,7 +121,8 @@ const Form = (props) => {
                         required: true
                     },
                     valid: false,
-                    touched: false},
+                    touched: false
+                }
              })
         }
     }, [props.signup])
@@ -130,17 +133,30 @@ const Form = (props) => {
         formInputs.push({...inputData[key]});
     }
 
-    //input for usertype 
-    const changeHandler = (e, photoData) => {
-       let updatedForm = {...inputData};
+    const priceInputHandler = (formData) => {
+        let tempObject;
+ 
+        if(priceInput){
+           tempObject = _.omit(formData, 'price');
+           setPriceInput(false);
+           return tempObject;
+        }else{
+            tempObject = {...formData, price:{type:'text', name:'price', value:'', validation:{}, valid: true, touched: false }}
+            setPriceInput(true);
+            return tempObject;
+        }
+    }
 
+
+    const changeHandler = (e, photoData) => {
+       //if doctor show one more input price:{type:'text', name:'price', value:''}
+        let updatedForm = {...inputData};
+  
        //file base64 react doest give event object
-       if(photoData){ updatedForm['photo'].value = photoData;}
+       if(photoData){ console.log('ran'); updatedForm['photo'].value = photoData;}
+
 
        else{
-        //if doctor show one more input
-        if(e.target.name === 'userType'){ if(e.target.value === 'doctor'){updatedForm = {...updatedForm, price:{type:'text', name:'price', value:''}}}else{updatedForm = {...updatedForm}}}
-
         const updatedFormElement = updatedForm[e.target.name];
         updatedFormElement.value = e.target.value;
         updatedFormElement.valid = checkValidity(updatedFormElement.value, updatedFormElement.validation);
@@ -154,6 +170,8 @@ const Form = (props) => {
     for(let input in updatedForm){
         tempFormIsValid = updatedForm[input].valid && tempFormIsValid;
     } 
+
+    if(e?.target.name === 'userType'){updatedForm = priceInputHandler(updatedForm)}
 
 
        setInputData(updatedForm);
@@ -188,6 +206,7 @@ const Form = (props) => {
          inValid={!el.valid}
          />)
      })}
+     
 
     <Button disabled={!formIsValid} btnType="btnCard" btnColor="btnGreen">Submit Details</Button>
     </form>

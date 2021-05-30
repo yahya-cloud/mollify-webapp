@@ -18,6 +18,7 @@ header{
     margin-left: auto;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .personImg{
@@ -25,20 +26,96 @@ header{
     height: 4.5rem;
     border-radius: 50%;
     background-color: #ebebeb;
+    margin-right: 1.5rem;
 }
 
 .headerControls h2{
     font-size: 2rem;
     color: var(--color-grey2);
-    margin-right: 2rem;
+    display: flex;
+    align-items: center;
 }
 
-.headerControls  div{
-    margin-right: 2.5rem ;
-}
 
 .personControls{
     position: relative;
     display: flex;
     align-items: center;
+}
+
+
+.icon{
+    font-size: 3rem!important;
+    margin-right: 1.5rem;
+    cursor: pointer;
+}
+
+.menu ul{
+   width: 14rem;
+}
+.menu ul li{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.logo{
+  width:4rem;
+  height: 4rem;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.burgerIcon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all .2s ease;
+    display: none;
+}
+
+.burgerIcon div:not(:first-child){
+  margin-top: 5px;
+}
+
+.burgerIconLine{
+border-radius: 1px;
+width: 35px;
+height: 3px;
+background-color: var(--color-grey2);
+transition: all .1s ease;
+}
+
+.burgerIcon.opened{
+  transform: translateY(2px);
+} 
+
+.burgerIcon.opened  .burgerIconLine{
+  margin-top: 0rem;
+}
+
+.burgerIcon.opened  .burgerIconLine2{
+  display: none;
+}
+
+.burgerIcon.opened  .burgerIconLine1{
+  transform:translate(1px,-1px) rotate(45deg );
+}
+
+.burgerIcon.opened  .burgerIconLine3{
+  transform:translateY(-4px) rotate(-45deg );
+}
+
+@media only screen and (max-width: 1000px){
+    .burgerIcon{
+       display: block;
+    }
+}
+
+@media only screen and (max-width: 500px){
+  header{
+  padding: 0 3rem;
+  }
+  .headerControls h2{
+  display: none;
+  }
 }

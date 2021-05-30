@@ -1,13 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useDispatch, useSelector } from 'react-redux';
 import {rejectRequest} from '../../../store/actions/doctor';
-import { Modal } from '@material-ui/core';
+import {submitRating} from '../../../store/actions/patient';
 import { makeStyles } from '@material-ui/core/styles';
 
 
 import GridContainer from '../../GridContainer/GridContainer';
-import NoData from '../../UI/NoData/NoData';
 import RateCard from './RateCard/RateCard';
 
 
@@ -21,28 +20,35 @@ const useStyles = makeStyles((theme) => ({
 const AcceptedRequests = (props) => {
 
     const {user} = useSelector(state => state);
+    const [show, setShow] = useState(false);
+    const [doctorData, setDoctorData] = useState();
+
     const classes = useStyles();
     const dispatch = useDispatch();
+
+  
+    const submitRatingHandler = (rating) => {
+       setShow(false);
+       dispatch(submitRating({userRating:`star${rating}`, email: doctorData.email}));
+      dispatch(rejectRequest(user.email,user.userType, doctorData.email));
+    }
     
     const sessionCompleteHandler = (data) => {
-       dispatch(rejectRequest(user.email,user.userType, data.personData.email))
+      setShow(true);
+      setDoctorData(data.personData);
     }
 
 
     return (
     <div>
-    {user.acceptedRequests.length === 0 ?
-      <NoData text="You have no Accepted requests"/>
-      :
       <GridContainer 
         cardArray={user.acceptedRequests}
         userType="patient"
         redBtnFunc ={sessionCompleteHandler} 
         redBtnTxt="Session Completed"
        />    
-    }
-    <Backdrop open={true} className={classes.backdrop}>
-       <RateCard />
+    <Backdrop open={show} className={classes.backdrop} >
+       <RateCard btnFunc={submitRatingHandler}/>
     </Backdrop>
     </div>
     )

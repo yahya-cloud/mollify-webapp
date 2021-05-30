@@ -62,5 +62,3 @@ export const sessionSucceed = async(req, res) => {
     }
 }
 
-
-//i understand bhut bache hai jinhe classes shi se na hone pr problem hai 

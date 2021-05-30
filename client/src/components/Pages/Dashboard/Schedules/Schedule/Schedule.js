@@ -8,7 +8,7 @@ const Schedule = (props) => {
 
     let sessionType;
     const {photo, time, name} = props.personData;
-    if(props.schedule){sessionType = props.personData.sessionType}
+    if(props.schedule && props.width > 600){sessionType = props.personData.sessionType}
 
    
 

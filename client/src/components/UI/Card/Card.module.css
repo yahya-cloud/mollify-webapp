@@ -7,12 +7,10 @@
     border-radius: 20px;
     box-shadow: var(--box-shadow);
     padding: 2rem;
-    padding-right: 0rem;
 }
 
 .cardComponent{
     width: 100%;
-    margin: 0rem 2rem;
     display: flex;
 }
 
@@ -55,3 +53,20 @@
     
 }
 
+@media only screen and (max-width: 600px){
+    .cardComponent{
+        flex-direction: column;
+    }
+
+    .Card{
+        padding: 1rem;
+    }
+
+    .btnBox > * {
+        flex: 95%;
+    }
+    .cardPhoto{
+        align-self: center;
+    }
+
+}

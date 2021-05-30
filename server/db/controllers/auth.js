@@ -1,10 +1,14 @@
+import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
+
 import DoctorModel from '../models/doctor.js';
 import PatientModel from '../models/patient.js';
 import {searchModels} from './common.js';
+dotenv.config();
 
-const secret = 'test';
+const secret = process.env.secret;
 
 export const signIn = async (req, res) => {
   try {
@@ -16,7 +20,7 @@ export const signIn = async (req, res) => {
 
     if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid Password. Please try again" });
 
-    const token = jwt.sign({email: oldUser.email }, secret, { expiresIn: "1h" });
+    const token = jwt.sign({email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "1h" });
 
     res.status(200).json({result: oldUser, token});
 
@@ -27,8 +31,10 @@ export const signIn = async (req, res) => {
 };
 
 export const signUp = async (req, res) => {
+
     
     try {
+
       const oldUser = await searchModels(req.body.email);
   
       if (oldUser) return res.status(400).json({ message: "User already exists. Please Go to sign-in page" });
@@ -38,14 +44,11 @@ export const signUp = async (req, res) => {
       const result = await (req.body.userType === 'doctor' ? DoctorModel : PatientModel).create({...req.body, password:hashedPassword});
 
       const token = jwt.sign( {email: result.email}, secret, { expiresIn: "1h" } );
-
     
       res.status(200).json({result, token});
 
     } catch (error) {
-      res.status(500).json({ message: "Something went wrong. Please try again later" });
-      
-      console.log(error);
+      res.status(500).json({ message: `Something went wrong. Please try again later`});
     }
   };
 
@@ -79,14 +82,28 @@ export const signUp = async (req, res) => {
         
         res.status(200).json({result, message:"Password and Details have been successfully updated"});
       }else{
-        result =  await (req.body.userType === 'doctor' ? DoctorModel : PatientModel).findByIdAndUpdate(id, {userData}, {new: true});
-       
+        result =  await (req.body.userType === 'doctor' ? DoctorModel : PatientModel).findByIdAndUpdate(id, {...userData}, {new: true});
+
         res.status(200).json({result, message:"Details have been successfully updated"});
       } 
         
     } catch (error) {
-      console.log(error);
       res.status(500).json({ message: "Something went wrong. Please try again later" });
     }
     
+}
+
+export const deleteUser = async (req, res) => {
+  try {
+    const {id: id, userType} = req.params;
+    
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).send('No user with that id');
+    }
+
+    await (userType === 'doctor' ? DoctorModel : PatientModel).findByIdAndDelete(id);
+    res.json({message: "Profile deleted Successfully"})
+  } catch (error) {
+    console.log(error);
+  }
 }

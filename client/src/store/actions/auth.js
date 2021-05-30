@@ -32,3 +32,10 @@ export const updateUser = (params) => async(dispatch) => {
     data && dispatch({type:SHOWLOADER, payload: data.message}); 
     data && dispatch({type: AUTH, payload: data.result});
 }
+
+export const deleteUser = (id, userType) => async(dispatch) => {
+    const {data} = await api.deleteUser(id,userType);
+    dispatch({type:SHOWLOADER, payload: data.message}); 
+    dispatch({type: AUTH, payload: ''});
+    localStorage.clear();
+} 

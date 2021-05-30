@@ -164,6 +164,25 @@
     .descriptionSvg__container{
         width: 90%;
     }
+
+    .home__section{
+        margin: 0;
+        padding: 0;
+        height: 80vh;
+    }
+
+    .description__container{
+        margin: 0rem;
+        margin-top: 8rem;
+    }
+    .heading--stats{
+        font-size: 3.5rem;
+    }
+
+    .stats__container{
+        padding: 1rem;
+    }
+
 }
 
 
@@ -272,7 +291,6 @@
 @media only screen and (max-width:500px){
 
     .info__cards--container{
-        width: 70%;
         justify-content: space-between;
     }
 
@@ -282,12 +300,6 @@
 
     .paragraph--info{
         width: 95%;
-    }
-}
-
-@media only screen and (max-width:360px){
-    .info__cards--container{
-        width: 60%;
     }
 }
 
@@ -322,6 +334,7 @@
 
     .statCard--4{
         background-color: #25B5F1;
+        margin-right: 0;
     }
 
 .overlay--statCard{
@@ -364,6 +377,9 @@
     .statCard{
         flex: 1;
     }
+    .statCard--4{
+        margin: 0rem 3.5rem 3rem 0rem;
+    }
 }
 
 @media only screen and (max-width:500px){
@@ -374,7 +390,7 @@
     }
 
     .stat__num{
-        font-size: 5rem;
+        font-size: 4.5rem;
     }
 }
 

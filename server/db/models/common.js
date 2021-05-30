@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+
 export const commonSchema = {
     photo: String,
     name: String,
@@ -28,14 +29,3 @@ export const scheduleSchema =  mongoose.Schema({
     disorder: String
 })
 
-// function getNumber(value) {
-//     console.log(value);
-//     if (typeof value !== 'undefined') {
-//        return parseFloat(value.toString());
-//     }
-//     return value;
-// }
-// export const decimal = {
-//     type: mongoose.Decimal128,
-//     get: getNumber
-// }

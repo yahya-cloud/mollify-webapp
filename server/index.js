@@ -1,16 +1,21 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
 import cors from 'cors';
+import dotenv from 'dotenv';
+import path from 'path';
+
 import authRoutes from './routes/auth.js';
 import patientRoutes from './routes/patient.js';
 import doctorRoutes from './routes/doctor.js';
 import commonRoutes from './routes/common.js';
 
-
 const app = express();
-app.use(bodyParser.json({limit: "30mb", extended: true}));
-app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
+const PORT = process.env.PORT || 5000;
+
+dotenv.config();
+
+app.use(express.json({limit: "30mb", extended: true}));
+app.use(express.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
 //routes
@@ -20,11 +25,19 @@ app.use(doctorRoutes);
 app.use(commonRoutes);
 
 
+//Server static assets if in production
+if(process.env.NODE_ENV ==='production'){
+
+    //static folder
+    app.user(express.static('../client/build'))
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+    })
+}
 
 //CONNECTION URL FROM MONGOOSE
-const CONNECTION_URL = 'mongodb+srv://mollify-server:nSvN8uCTKf1zYOfy@cluster0.sscnj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-const PORT = process.env.PORT || 5000;
-
+const CONNECTION_URL = process.env.CONNECTION_URL;
 
 mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => app.listen(PORT, () => console.log('server running on port '+ PORT)))

@@ -6,7 +6,6 @@ import {useSelector} from 'react-redux';
 import classes from './Navbar.module.css';
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
-import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import NavigationOutlinedIcon from '@material-ui/icons/NavigationOutlined';
 import BuildOutlinedIcon from '@material-ui/icons/BuildOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
@@ -15,12 +14,11 @@ import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 const Navbar = () => {
     const {user} =  useSelector(state => state);
     const location = useLocation();
-    // console.log(location.pathname.slice(1,9).toString());
     return (
         <div className={`${classes.navbar}`}>
         {user.userType === 'doctor' ? 
         <>
-        <NavLink exact activeClassName={classes.navItemActive} className={classes.navItem} to="/" active> 
+        <NavLink exact activeClassName={classes.navItemActive} className={classes.navItem} to="/" > 
         <DashboardOutlinedIcon className={classes.navIcon} />   Dashboard
         </NavLink>
 
@@ -39,11 +37,12 @@ const Navbar = () => {
         </NavLink>
         </>
         }
-
+        
+        {/* link not getting because of custom person address */}
             <NavLink 
             activeClassName={classes.navItemActive}
             className={classes.navItem}
-            isActive={() => location.pathname.slice(1,9) === 'navigate' }
+            isActive={() => (location.pathname.slice(1,9) === 'navigate') ? 1 : 0 }
             to="/navigate/:personAddress"> 
             <NavigationOutlinedIcon className={classes.navIcon} />  Navigation
             </NavLink>
@@ -55,7 +54,6 @@ const Navbar = () => {
             <NavLink activeClassName={classes.navItemActive} className={classes.navItem} to="/settings"> 
             <SettingsOutlinedIcon className={classes.navIcon} />  Settings
             </NavLink>
-
         </div>
     )
 }

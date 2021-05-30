@@ -32,9 +32,9 @@ const Card = (props) => {
    else{
        dataToFetch = [...dataToFetch,'gender', 'disorder', 'time', 'sessionType']
    }
-   dataToFetch.forEach(el => {
+   dataToFetch.forEach((el,id) => {
     infos.push(
-        <div className={classes.cardInfo}>
+        <div key={id} className={classes.cardInfo}>
         <h3>{el.slice(0,1).toUpperCase() + el.slice(1)}:</h3> <p>{props.person[el]}</p> 
         </div>
     )})

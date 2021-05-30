@@ -43,21 +43,25 @@
     margin-bottom: 1rem;
 }
 
-@media only screen and (max-width:600px){
 
-    .inputContainer{
-        width: 80%;
-        margin-top: 6rem;
-    }
-
+.invalid > input{
+    border-bottom: 2px solid red!important;
 }
 
-.invalid{
-    border-bottom: 2px solid red!important;
+.invalid  > p{
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: .2rem;
 }
 
 .errorMessage{
     font-size: 1.2rem;
     margin-top: .4rem;
     font-family: var(--font-para);
+}
+
+@media only screen and (max-width: 600px){
+    .photoContainer{
+        width: 50%;
+    }
 }

@@ -56,45 +56,6 @@
 }
 
 
-
-/* ICON BOX */
- .iconBox{
-     width: 6rem;
-     height: 6rem;
-     margin-top: 1rem;
-     margin-right: 3rem;
-     border-radius: 50%;
-     position: relative;
- }
-
- .iconBox svg{
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     font-size: 3.2rem;
-     font-weight: 600;
- }
-
-.iconBox__clinic{
-    background-color: #EAF3F1;
-}
-.iconBox__home{
-    background-color: #DBF3FA;
-}
-.iconBox__failed{
-    background-color: #FFD9D9;
-}
-.iconBox__patients{
-    background-color: #F7E0FF;
-}
-.iconBox__earning{
-    background-color: #E0FF87;
-}
-.iconBox__rating{
-    background-color: #FFF3C7;
-}
-
 /* Schedule */
 .subHeadings {
     margin-top: 2rem;

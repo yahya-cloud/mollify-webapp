@@ -3,3 +3,9 @@
     padding: 2rem 3rem;
     overflow-y: scroll;
 }
+
+@media only screen and (max-width: 400px){
+    .routingContainer{
+        padding: 0rem;
+    }
+}

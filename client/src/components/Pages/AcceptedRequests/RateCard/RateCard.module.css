@@ -6,10 +6,22 @@ input[type='radio']{
 display: flex;
 flex-direction: column;
 align-items: center;
+width: max-content;
+background-color: #fff;
+padding: 3rem;
+color: #000;
+border-radius: 5px;
 }
 .ratingBox h1{
     font-size: 4rem;
-    font-weight: 400;
-    margin-bottom: 2rem;
+    font-weight: 500;
 }
 
+.ratingBox > div{
+    margin: 1rem;
+}
+
+.button{
+   font-size: 2rem!important;
+   color: #fff;
+}

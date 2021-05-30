@@ -1,7 +1,7 @@
 .registerContainer{
     width: 100vw;
     height: min-content;
-    padding: 8rem 0rem 25rem 0rem;
+    padding: 8rem 0rem 10rem 0rem;
 }
 
 
@@ -25,3 +25,4 @@
     outline: none;
     border: none;
 }
+

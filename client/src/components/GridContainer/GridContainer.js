@@ -1,22 +1,23 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
-import {useSelector} from 'react-redux';
 
 
 import Card from '../UI/Card/Card';
+import NoData from '../UI/NoData/NoData';
 
 const GridContainer = (props) => {
     let navigate = true;
     navigate = !(useHistory().location.pathname === '/' && props.userType === 'patient');
-    const {user} =  useSelector(state => state);
-
 
     return (
-        <div className='root'>
+        <>
+        {props.cardArray.length !== 0 ?
+            (<div className='root'>
         <Grid className='gridContainer' container spacing={4}>
-        {props.cardArray.map(el => {
+        {props.cardArray.map((el, id) => {
             return <Card
+            key={id}
             showInputs={props.showInputs}
             person={el} 
             navigate={navigate}
@@ -26,9 +27,12 @@ const GridContainer = (props) => {
             greenBtnTxt={props.greenBtnTxt}
             redBtnTxt={props.redBtnTxt} />
         })}
-            
         </Grid>
-        </div>
+        </div>) :
+        <NoData text="You have no patient requests"/>
+        }
+         
+        </>
     )
 }
 

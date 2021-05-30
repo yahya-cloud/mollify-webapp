@@ -9,3 +9,8 @@ export const requestSession = (user, person) => async(dispatch) => {
         const data = await dispatchFunction(reqParams, api.requestSession, dispatch);
         data && dispatch({type:SHOWLOADER, payload: data.message});        
 }
+
+export const submitRating = (params) => async(dispatch) => {
+       const data = await dispatchFunction(params,  api.submitRating, dispatch);
+       data && dispatch({type:SHOWLOADER, payload: data.message});        
+}

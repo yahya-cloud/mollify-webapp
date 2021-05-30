@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import GridContainer from '../../GridContainer/GridContainer';
 import {acceptRequest, rejectRequest} from '../../../store/actions/doctor';
-import NoData from '../../UI/NoData/NoData';
+
 
 const PatientRequests = () => {
 
@@ -19,7 +19,6 @@ const PatientRequests = () => {
 
 
     return (
-    user.requests === 0 ?
     <GridContainer 
     cardArray={user.requests}
     userType="doctor"
@@ -27,8 +26,6 @@ const PatientRequests = () => {
     redBtnFunc={rejectRequestHandler} 
     greenBtnTxt="Accept Request"
     redBtnTxt="Delete Request" />
-    :
-    <NoData text="You have no patient requests"/>
     )
 }
 

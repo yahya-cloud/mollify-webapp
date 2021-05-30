@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
     messageBox:{
       zIndex: 5,
       borderRadius:'10px',
-      width:'35%',
+      width:'40%',
       height: '50%',
       backgroundColor: '#fff',
       display: 'flex',

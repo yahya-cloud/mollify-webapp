@@ -13,6 +13,7 @@ const Doctors = () => {
     const  {user} = useSelector(state => state); 
 
 
+
     const requestHandler = (data) => {
         const userData = {...user, ...data.inputData}
         dispatch(requestSession(userData, data.personData));

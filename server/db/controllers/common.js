@@ -3,16 +3,18 @@ import DoctorModel from '../models/doctor.js'
 
 export const searchModels = async (email) => {
     try {
-       let model;
-       model = await  DoctorModel.findOne({email});
-       if(!model) {
-       model = await PatientModel.findOne({email});
+       let person;
+       person = await  DoctorModel.findOne({email});
+       if(!person) {
+       person = await PatientModel.findOne({email});
        }
-       return (model);   
+       return (person);   
     } catch (error) {
         console.log(error);
     }
 }
+
+
 
 
 export const deleteRequest = async(req, res) => {
@@ -31,4 +33,5 @@ export const deleteRequest = async(req, res) => {
     } catch (error) {
         console.log(error);
     }
+    
 }

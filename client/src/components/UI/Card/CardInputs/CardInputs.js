@@ -36,6 +36,7 @@ const CardInputs = (props) => {
                 <option value='stress'>Stress</option>
                 <option value='depression'>Depression</option>
                 <option value='traumatic'>Post Traumatic</option>
+                <option value='eating'>Eating</option>
             </select>
             </div>
 

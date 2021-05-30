@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import {useSelector} from 'react-redux'; 
 
 import classes from './RoutingContainer.module.css';
@@ -17,13 +17,17 @@ const RoutingContainer = () => {
 
     if(user.userType === 'doctor'){
         pages = (<>
-            <Route path="/patientRequest"> <PatientRequests/> </Route>
-            <Route path='/' exact><Dashboard /></Route>
+            <Switch>
+            <Route path="/patientRequest" > <PatientRequests/> </Route>
+            <Route path='/' ><Dashboard /></Route>
+            </Switch>
         </>)
     }else{
         pages = (<>
-            <Route path="/acceptedRequests"> <AcceptedRequests /> </Route>
-            <Route path='/' exact><Doctors /></Route>
+            <Switch>
+            <Route path="/acceptedRequests"  > <AcceptedRequests /> </Route>
+            <Route path='/' ><Doctors /></Route>
+            </Switch>
         </>)
     }
 
@@ -33,7 +37,25 @@ const RoutingContainer = () => {
             <Route  path="/settings"><SettingsPage /></Route>
             <Route  path="/ourWorking"> <OurWorking/> </Route>
             <Route  path="/navigate/:personAddress" ><Navigate /></Route>
+
             {pages}
+            {/* {user.userType === 'doctor' ? 
+            (<Switch>
+            <Route path="/patientRequest" exact> <PatientRequests/> </Route>
+            <Route path='/' ><Dashboard /></Route>
+            </Switch>
+            )
+            :
+            (<Switch>
+            <Route path="/acceptedRequests" > <AcceptedRequests /> </Route>
+            <Route path='/' ><Doctors /></Route>
+            </Switch>
+            ) */}
+
+
+
+
+            <Redirect push to="/" />
         </Switch>
         </div>
     )

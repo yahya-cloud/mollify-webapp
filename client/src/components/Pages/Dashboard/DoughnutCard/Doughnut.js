@@ -4,7 +4,7 @@ import classes from './Doughnut.module.css';
 
 const DoughnutCard = (props) => {
 
-    const [data, setData] = useState({
+    const data = useState({
         labels:[...props.labels],
         
         datasets:[{

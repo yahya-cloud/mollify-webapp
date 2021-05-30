@@ -4,7 +4,7 @@ import {Bar} from 'react-chartjs-2';
 
 const OurWorking = () => {
 
-    const [data, setData] = useState({
+    const  data = useState({
         labels:["Cases", "Active", "Deaths","Recovered" ],
         datasets:[{
             label:"people",

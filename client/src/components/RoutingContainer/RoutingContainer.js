@@ -39,19 +39,6 @@ const RoutingContainer = () => {
             <Route  path="/navigate/:personAddress" ><Navigate /></Route>
 
             {pages}
-            {/* {user.userType === 'doctor' ? 
-            (<Switch>
-            <Route path="/patientRequest" exact> <PatientRequests/> </Route>
-            <Route path='/' ><Dashboard /></Route>
-            </Switch>
-            )
-            :
-            (<Switch>
-            <Route path="/acceptedRequests" > <AcceptedRequests /> </Route>
-            <Route path='/' ><Doctors /></Route>
-            </Switch>
-            ) */}
-
 
 
 

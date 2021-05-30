@@ -3,15 +3,16 @@ import { Doughnut } from 'react-chartjs-2';
 import classes from './Doughnut.module.css';
 
 const DoughnutCard = (props) => {
+    console.log(...props.labels);
 
-    const data = useState({
+    const data = {
         labels:[...props.labels],
         
         datasets:[{
             data:[...props.data],
             backgroundColor:[...props.colors],
         } ]
-    })
+    }
 
     return (
         <div className={classes.doughnutCard}>

@@ -28,28 +28,31 @@ const Navigate = (props) => {
         mapboxgl.accessToken = 'pk.eyJ1IjoieWFoeWExMjMiLCJhIjoiY2tuOG8ydmc2MDV3ZTJwbXJyOHp3d2EzaCJ9.1gLWywSZj208OsijDUCE6A';
 
        (async function(){
-        const {coords}  = await getCoordinates();
+         try {
+          const {coords}  = await getCoordinates();
 
-        map = new mapboxgl.Map({
-        container: 'container',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [coords.longitude, coords.latitude],
-        zoom: 11
-        });
-        const directions = new MapboxDirections({
-               accessToken: mapboxgl.accessToken
-        });
-    
-        map.addControl(
-        directions,
-        'top-left' 
-        );
-    
-        map.on('load',  function() {
-        directions.setOrigin([coords.longitude, coords.latitude]);// can be address in form setOrigin("12, Elm Street, NY")
-        directions.setDestination(personAddress); // can be address
-        })  
-
+          map = new mapboxgl.Map({
+          container: 'container',
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: [coords.longitude, coords.latitude],
+          zoom: 11
+          });
+          const directions = new MapboxDirections({
+                 accessToken: mapboxgl.accessToken
+          });
+      
+          map.addControl(
+          directions,
+          'top-left' 
+          );
+      
+          map.on('load',  function() {
+          directions.setOrigin([coords.longitude, coords.latitude]);// can be address in form setOrigin("12, Elm Street, NY")
+          directions.setDestination(personAddress); // can be address
+          })             
+         } catch (error) {
+           console.log(error);
+         }
         })()
 
         

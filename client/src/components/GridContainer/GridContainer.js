@@ -29,7 +29,7 @@ const GridContainer = (props) => {
         })}
         </Grid>
         </div>) :
-        <NoData text="You have no patient requests"/>
+        <NoData text="You have no pending requests"/>
         }
          
         </>

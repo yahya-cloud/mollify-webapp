@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './OurWorking.css';
 import {Bar} from 'react-chartjs-2';
 

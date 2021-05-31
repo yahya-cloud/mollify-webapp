@@ -4,14 +4,14 @@ import {Bar} from 'react-chartjs-2';
 
 const OurWorking = () => {
 
-    const  data = useState({
+    const  data = {
         labels:["Cases", "Active", "Deaths","Recovered" ],
         datasets:[{
             label:"people",
             data:[11210799, 5945233 ,1133291, 4811942  ],
             backgroundColor:["#EAA62C","#E84D54","#7A4A81", "#25B5F1"],
         }]
-    })
+    }
 
     return (
         <div>

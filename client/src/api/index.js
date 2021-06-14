@@ -1,14 +1,14 @@
 import * as axios from 'axios';
 
-const API = axios.create({baseURL: 'https://nameless-beyond-33226.herokuapp.com' });
+const API = axios.create({baseURL: 'http://localhost:5000/' });
 
 API.interceptors.request.use((req) => {
-
     if(localStorage.getItem('userToken')){
         req.headers.Authorization = ` Bearer ${localStorage.getItem('userToken')}`;
     }
      return req;
 })
+
 
 export const signIn = (formData) => API.post('/signIn', formData);
 export const signUp = (formData) =>  API.post('/signUp', formData);

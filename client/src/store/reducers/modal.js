@@ -1,18 +1,16 @@
-import {SHOWLOADER, HIDELOADER} from '../actions/actionTypes';
+import { SHOWLOADER, HIDELOADER } from '../actions/actionTypes'
 
+const loader = (state = { show: false, msg: '' }, action) => {
+  switch (action.type) {
+    case SHOWLOADER:
+      return { show: true, msg: action?.payload }
 
-const loader = (state = {show:false, msg:''},  action ) => {
-    switch (action.type) {
-        case SHOWLOADER:
-            return {show: true, msg: action?.payload}
+    case HIDELOADER:
+      return { show: false, msg: '' }
 
-        case HIDELOADER:
-            return {show: false, msg: ''}
-
-        default:
-            return state
-    }
+    default:
+      return state
+  }
 }
 
-
-export default loader;
+export default loader

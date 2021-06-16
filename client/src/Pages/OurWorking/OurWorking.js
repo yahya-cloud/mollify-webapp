@@ -4,6 +4,7 @@ import {Bar} from 'react-chartjs-2';
 
 const OurWorking = () => {
 
+    //chart.js graph
     const  data = {
         labels:["Cases", "Active", "Deaths","Recovered" ],
         datasets:[{

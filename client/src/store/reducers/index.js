@@ -1,7 +1,6 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux'
 
+import user from './user'
+import modal from './modal'
 
-import user from './auth';
-import modal from './modal';
-
-export default combineReducers({user, modal});
+export default combineReducers({ user, modal })

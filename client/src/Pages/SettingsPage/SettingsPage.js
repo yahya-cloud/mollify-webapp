@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import Button from '../../UI/Button/Button';
-import Input from '../../Form/Input/Input';
+import Button from '../../components/UI/Button/Button';
+import Input from '../../components/Form/Input/Input';
 
-import {updateUser} from '../../../store/actions/auth';
+import {updateUser} from '../../store/actions/auth';
 
 const SettingsPage = () => {
 

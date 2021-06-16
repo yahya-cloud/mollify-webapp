@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
 
-import Form from '../../Form/Form';
-import {signUp, signIn} from '../../../store/actions/auth';
+import Form from '../../components/Form/Form';
+import {signUp, signIn} from '../../store/actions/auth';
 
 import classes from './Register.module.css';
 
@@ -10,6 +10,7 @@ import classes from './Register.module.css';
 const Register = () => {
 
     const [isSignUp, setIsSignUp] = useState(false);
+    //solving white space at bottom while switching from signup to signIn 
     const [height, setHeight] = useState('100vh');
     const dispatch = useDispatch();
 

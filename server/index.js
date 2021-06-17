@@ -18,9 +18,9 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
 
 //routes
-app.use(authRoutes)
-app.use(patientRoutes)
-app.use(doctorRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/patient', patientRoutes)
+app.use('/api/doctor', doctorRoutes)
 app.use(commonRoutes)
 
 const __dirname = path.resolve()

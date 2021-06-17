@@ -12,7 +12,7 @@ const PatientRequests = () => {
   }
 
   const rejectRequestHandler = (data) => {
-    dispatch(rejectRequest(user.email, user.userType, data.personData.email))
+    dispatch(rejectRequest(data.personData.email))
   }
 
   return (

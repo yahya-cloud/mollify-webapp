@@ -1,9 +1,9 @@
-import express from 'express';
-import {deleteRequest} from '../db/controllers/common.js';
-import auth from '../db/middleware/auth.js'
+import express from 'express'
+import { deleteRequest } from '../db/controllers/common.js'
+import { searchModels } from '../db/middleware/searchMiddleware.js'
 
-const router = express.Router();
+const router = express.Router()
 
-router.patch('/deleteRequest', auth, deleteRequest);
+router.patch('/deleteRequest', searchModels, deleteRequest)
 
-export default router;
+export default router

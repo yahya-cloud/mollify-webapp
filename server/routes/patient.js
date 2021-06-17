@@ -1,11 +1,15 @@
-import express from 'express';
-import {getDoctors, requestSession, submitRating} from '../db/controllers/patient.js';
-import auth from '../db/middleware/auth.js';
+import express from 'express'
+import {
+  getDoctors,
+  requestSession,
+  submitRating,
+} from '../db/controllers/patient.js'
+import { isPatient } from '../db/middleware/authMiddleware.js'
 
-const router = express.Router();
+const router = express.Router()
 
-router.get('/getDoctors', auth, getDoctors);
-router.patch('/requestSession', auth, requestSession);
-router.patch('/submitRating', auth, submitRating);
+router.get('/getDoctors', isPatient, getDoctors)
+router.patch('/requestSession', isPatient, requestSession)
+router.patch('/submitRating', isPatient, submitRating)
 
-export default router;
+export default router

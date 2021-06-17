@@ -14,7 +14,7 @@ const CardRequests = () => {
   }
 
   const rejectRequestHandler = (data) => {
-    dispatch(rejectRequest(user.email, user.userType, data.email))
+    dispatch(rejectRequest(data.email))
   }
 
   return (

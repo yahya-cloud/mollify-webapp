@@ -2,7 +2,6 @@ import * as api from '../../api/index'
 import { USER, LOGOUT, SHOWLOADER } from './actionTypes'
 import { loaderFunction } from '../Utility'
 
-
 //if condition in every function because loaderFuntion will not return data if there's error
 export const signIn = (formData) => async (dispatch) => {
   const data = await loaderFunction(formData, api.signIn, dispatch)
@@ -14,6 +13,7 @@ export const signIn = (formData) => async (dispatch) => {
 
 export const signUp = (formData) => async (dispatch) => {
   const data = await loaderFunction(formData, api.signUp, dispatch)
+  console.log(data.result);
   if (data) {
     dispatch({ type: USER, payload: data.result })
     localStorage.setItem('userToken', data.token)
@@ -26,8 +26,8 @@ export const logOut = (history) => {
   return { type: LOGOUT }
 }
 
-export const getUser = (email) => async (dispatch) => {
-  const data = await loaderFunction({ email }, api.getUser, dispatch)
+export const getUser = () => async (dispatch) => {
+  const data = await loaderFunction({}, api.getUser, dispatch)
   if (data) {
     dispatch({ type: USER, payload: data.result })
   }
@@ -41,8 +41,8 @@ export const updateUser = (params) => async (dispatch) => {
   }
 }
 
-export const deleteUser = (id, userType) => async (dispatch) => {
-  const { data } = await api.deleteUser(id, userType)
+export const deleteUser = () => async (dispatch) => {
+  const { data } = await api.deleteUser()
   if (data) {
     dispatch({ type: SHOWLOADER, payload: data.message })
     dispatch({ type: USER, payload: '' })

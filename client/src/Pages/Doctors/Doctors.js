@@ -9,10 +9,10 @@ import GridContainer from '../../components/GridContainer/GridContainer'
 const Doctors = () => {
   const [doctors, setDoctors] = useState(null)
   const dispatch = useDispatch()
-  const { user } = useSelector((state) => state)
 
+  //function to make session request
   const requestHandler = (data) => {
-    const userData = { ...user, ...data.inputData }
+    const userData = { ...data.inputData }
     dispatch(requestSession(userData, data.personData))
   }
 

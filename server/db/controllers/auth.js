@@ -5,11 +5,15 @@ import jwt from 'jsonwebtoken'
 
 import DoctorModel from '../models/doctor.js'
 import PatientModel from '../models/patient.js'
+//function used in SignIn to search models
 import { searchModels } from './common.js'
 dotenv.config()
 
 const secret = process.env.SECRET
 
+// @desc  SignIn user
+// @route POST/api/auth/signIn
+// @access Public
 export const signIn = async (req, res) => {
   try {
     const oldUser = await searchModels(req.body.email)
@@ -42,9 +46,12 @@ export const signIn = async (req, res) => {
   }
 }
 
+// @desc  SignUp user
+// @route POST/api/auth/signUp
+// @access Public
 export const signUp = async (req, res) => {
   try {
-    const oldUser = await searchModels(req.body.email)
+    const oldUser = req.user
 
     if (oldUser)
       return res
@@ -58,7 +65,7 @@ export const signUp = async (req, res) => {
       : PatientModel
     ).create({ ...req.body, password: hashedPassword })
 
-    const token = jwt.sign({ email: result.email }, secret, { expiresIn: '1h' })
+    const token = jwt.sign({ id: result.id }, secret, { expiresIn: '1h' })
 
     res.status(200).json({ result, token })
   } catch (error) {
@@ -68,24 +75,29 @@ export const signUp = async (req, res) => {
   }
 }
 
+// @desc  Get user
+// @route GET/api/auth/getUser
+// @access Private
 export const getUser = async (req, res) => {
   try {
-    const result = await searchModels(req.body.email)
-    res.status(201).json({result})
+    res.status(201).json({ result: req.user })
   } catch (error) {
     console.log(error)
   }
 }
 
+// @desc  Update user
+// @route GET/api/auth/updateUser
+// @access Private
 export const updateUser = async (req, res) => {
   try {
-    const { userData, passwordData, id } = req.body
+    const { userData, passwordData } = req.body
+    const { _id: id, userType } = req.user
     const newPassword = passwordData.newPassword
-    const userEmail = req.body.email
     let result
 
     if (newPassword) {
-      const oldUser = await searchModels(userEmail)
+      const oldUser = req.user
 
       const isPasswordCorrect = await bcrypt.compare(
         passwordData.password,
@@ -99,7 +111,7 @@ export const updateUser = async (req, res) => {
 
       const hashedPassword = await bcrypt.hash(newPassword, 12)
 
-      result = await (req.body.userType === 'doctor'
+      result = await (userType === 'doctor'
         ? DoctorModel
         : PatientModel
       ).findByIdAndUpdate(
@@ -108,14 +120,12 @@ export const updateUser = async (req, res) => {
         { new: true }
       )
 
-      res
-        .status(200)
-        .json({
-          result,
-          message: 'Password and Details have been successfully updated',
-        })
+      res.status(200).json({
+        result,
+        message: 'Password and Details have been successfully updated',
+      })
     } else {
-      result = await (req.body.userType === 'doctor'
+      result = await (userType === 'doctor'
         ? DoctorModel
         : PatientModel
       ).findByIdAndUpdate(id, { ...userData }, { new: true })
@@ -131,13 +141,12 @@ export const updateUser = async (req, res) => {
   }
 }
 
+// @desc  Delete user
+// @route GET/api/auth/DeleteUser
+// @access Private
 export const deleteUser = async (req, res) => {
   try {
-    const { id: id, userType } = req.params
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).send('No user with that id')
-    }
+    const { id: id, userType } = req.user
 
     await (userType === 'doctor'
       ? DoctorModel
@@ -146,5 +155,6 @@ export const deleteUser = async (req, res) => {
     res.json({ message: 'Profile deleted Successfully' })
   } catch (error) {
     console.log(error)
+    res.json({ message: 'We were unable to delete your profile' })
   }
 }

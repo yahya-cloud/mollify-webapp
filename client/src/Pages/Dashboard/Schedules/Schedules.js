@@ -31,11 +31,11 @@ const Schedules = () => {
   }, [width])
 
   const sessionSucceedHandler = (data) => {
-    dispatch(sessionSucceed(user, data))
+    dispatch(sessionSucceed(data))
   }
 
   const sessionFailedHandler = (data) => {
-    dispatch(sessionFailed(user.email, data._id))
+    dispatch(sessionFailed(data._id))
   }
 
   return (

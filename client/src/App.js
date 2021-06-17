@@ -22,7 +22,7 @@ const App = () => {
       if (decodedToken.exp * 1000 < new Date().getTime()) {
         dispatch(logOut(history))
       } else {
-        dispatch(getUser(decodedToken.email))
+        dispatch(getUser())
       }
     }
   }, [dispatch, token, history])

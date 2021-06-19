@@ -14,7 +14,7 @@ const CardRequests = () => {
   }
 
   const rejectRequestHandler = (data) => {
-    dispatch(rejectRequest(data.email))
+    dispatch(rejectRequest(data._id))
   }
 
   return (
@@ -26,14 +26,16 @@ const CardRequests = () => {
         <h3>Time</h3>
         <h3>Accept/Reject</h3>
       </div>
-      {user.requests.map((el) => (
-        <Schedule
-          kye={el.name}
-          personData={el}
-          greenBtnFunc={acceptRequestHandler}
-          redBtnFunc={rejectRequestHandler}
-        />
-      ))}
+      {user.requests.map((el) => {
+        return (
+          <Schedule
+            key={el._id}
+            personData={el}
+            greenBtnFunc={acceptRequestHandler}
+            redBtnFunc={rejectRequestHandler}
+          />
+        )
+      })}
     </div>
   )
 }

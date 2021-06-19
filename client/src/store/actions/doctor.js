@@ -20,8 +20,8 @@ export const sessionSucceed = (person) => async (dispatch) => {
   dispatch({ type: USER, payload: data.result })
 }
 
-export const rejectRequest = (personEmail) => async (dispatch) => {
-  const params = { personEmail }
+export const rejectRequest = (id) => async (dispatch) => {
+  const params = { id }
   const data = await loaderFunction(params, api.deleteRequest, dispatch)
   dispatch({ type: USER, payload: data.result })
 }

@@ -151,7 +151,7 @@ const Form = (props) => {
           type: 'text',
           name: 'price',
           value: '',
-          validation: {},
+          validation: {minSize: 2},
           valid: true,
           touched: false,
         },

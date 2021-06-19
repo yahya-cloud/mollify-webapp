@@ -16,10 +16,10 @@ const GridContainer = (props) => {
       {props.cardArray.length !== 0 ? (
         <div className='root'>
           <Grid className='gridContainer' container spacing={4}>
-            {props.cardArray.map((el, id) => {
+            {props.cardArray.map(el => {
               return (
                 <Card
-                  key={id}
+                  key={el._id}
                   showInputs={props.showInputs}
                   person={el}
                   navigate={navigate}

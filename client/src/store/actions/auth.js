@@ -13,7 +13,6 @@ export const signIn = (formData) => async (dispatch) => {
 
 export const signUp = (formData) => async (dispatch) => {
   const data = await loaderFunction(formData, api.signUp, dispatch)
-  console.log(data.result);
   if (data) {
     dispatch({ type: USER, payload: data.result })
     localStorage.setItem('userToken', data.token)
@@ -44,8 +43,8 @@ export const updateUser = (params) => async (dispatch) => {
 export const deleteUser = () => async (dispatch) => {
   const { data } = await api.deleteUser()
   if (data) {
+    localStorage.clear()
     dispatch({ type: SHOWLOADER, payload: data.message })
     dispatch({ type: USER, payload: '' })
-    localStorage.clear()
   }
 }

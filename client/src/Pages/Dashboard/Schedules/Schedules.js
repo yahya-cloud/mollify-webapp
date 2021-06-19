@@ -50,7 +50,7 @@ const Schedules = () => {
       </div>
       {user.schedules.map((el) => (
         <Schedule
-          key={el.name}
+          key={el._id}
           redBtnFunc={sessionFailedHandler}
           greenBtnFunc={sessionSucceedHandler}
           personData={el}

@@ -12,6 +12,7 @@ const Card = (props) => {
   let user = props.userType
   const history = useHistory()
 
+
   const [data, setData] = useState({
     personData: props.person,
     inputData: {

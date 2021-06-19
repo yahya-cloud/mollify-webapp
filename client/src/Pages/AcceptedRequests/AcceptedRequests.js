@@ -31,7 +31,7 @@ const AcceptedRequests = () => {
     dispatch(
       submitRating({ userRating: `star${rating}`, email: doctorData.email })
     )
-    dispatch(rejectRequest(doctorData.email))
+    dispatch(rejectRequest(doctorData._id))
   }
 
   const sessionCompleteHandler = (data) => {

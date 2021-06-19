@@ -4,7 +4,7 @@ import {
   requestSession,
   submitRating,
 } from '../db/controllers/patient.js'
-import { isPatient } from '../db/middleware/authMiddleware.js'
+import { isPatient } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
 

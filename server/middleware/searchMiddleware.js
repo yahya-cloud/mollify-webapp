@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 import asyncHandler from 'express-async-handler'
-import DoctorModel from '../models/doctor.js'
-import PatientModel from '../models/patient.js'
+import DoctorModel from '../db/models/doctor.js'
+import PatientModel from '../db/models/patient.js'
 
 dotenv.config()
 
@@ -24,6 +24,6 @@ export const searchModels = asyncHandler(async (req, res, next) => {
   } catch (error) {
     console.error(error)
     res.status(401)
-    throw new Error('User not found')
+    throw new Error('Not authorized, token failed')
   }
 })

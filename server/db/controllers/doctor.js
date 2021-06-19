@@ -6,7 +6,7 @@ import DoctorModel from '../models/doctor.js'
 // @access Private
 export const acceptSession = async (req, res) => {
   try {
-    const { name, email, address, phoneNumber, photo } = req.user
+    const { name, email, address, phoneNumber, photo, _id: id } = req.user
     const {
       time,
       sessionType,
@@ -14,9 +14,10 @@ export const acceptSession = async (req, res) => {
       name: personName,
       photo: personPhoto,
       email: personEmail,
+      _id: requestId,
     } = req.body.person
 
-    await PatientModel.findOneAndUpdate(
+     await PatientModel.findOneAndUpdate(
       { email: personEmail },
       {
         $push: {
@@ -32,11 +33,11 @@ export const acceptSession = async (req, res) => {
         },
       }
     )
-
-    const result = await DoctorModel.findOneAndUpdate(
-      { email: email },
+ 
+    const result = await DoctorModel.findByIdAndUpdate(
+      id,
       {
-        $pull: { requests: { email: personEmail } },
+        $pull: { requests: { _id: requestId } },
         $push: {
           schedules: {
             name: personName,
@@ -62,13 +63,12 @@ export const acceptSession = async (req, res) => {
 // @access Private
 export const sessionFailed = async (req, res) => {
   try {
-    const userEmail = req.user.email
-    const personId = req.body.personId
-
-    const result = await DoctorModel.findOneAndUpdate(
-      { email: userEmail },
+    const id = req.user._id
+    const patientId = req.body.personId
+    const result = await DoctorModel.findByIdAndUpdate(
+      id,
       {
-        $pull: { schedules: { _id: personId } },
+        $pull: { schedules: { _id: patientId } },
         $inc: { 'sessions.failed': 1 },
       },
       { new: true }

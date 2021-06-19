@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import path from 'path'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import morgan from 'morgan'
 import authRoutes from './routes/auth.js'
 import patientRoutes from './routes/patient.js'
 import doctorRoutes from './routes/doctor.js'
@@ -16,6 +17,10 @@ dotenv.config()
 app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
+
+if (process.env.NODE_ENV) {
+  app.use(morgan('dev'))
+}
 
 //routes
 app.use('/api/auth', authRoutes)

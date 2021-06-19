@@ -51,7 +51,7 @@ export const signIn = async (req, res) => {
 // @access Public
 export const signUp = async (req, res) => {
   try {
-    const oldUser = req.user
+    const oldUser = await searchModels(req.body.email)
 
     if (oldUser)
       return res
@@ -69,9 +69,10 @@ export const signUp = async (req, res) => {
 
     res.status(200).json({ result, token })
   } catch (error) {
+    
     res
       .status(500)
-      .json({ message: `Something went wrong. Please try again later` })
+      .json({ message: error.message })
   }
 }
 

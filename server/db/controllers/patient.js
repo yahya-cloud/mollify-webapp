@@ -20,6 +20,8 @@ export const requestSession = async (req, res) => {
   try {
     const { time, sessionType, gender, disorder } = req.body.user
     const { name, address, email, phoneNumber, photo } = req.user
+
+
     const result = await DoctorModel.findOneAndUpdate(
       { email: req.body.doctorEmail },
       {
@@ -67,6 +69,7 @@ export const submitRating = async (req, res) => {
     //algorithm to calculate total rating
     if (userRating) {
       const updatedRatings = { ...allRatings }
+
       updatedRatings[userRating] = updatedRatings[userRating] + 1
 
       const { star1, star2, star3, star4, star5 } = updatedRatings
@@ -88,6 +91,7 @@ export const submitRating = async (req, res) => {
       }
     }
   } catch (error) {
+    console.log(error)
     res
       .status(500)
       .json({ message: 'Sorry server error.Please request session again' })

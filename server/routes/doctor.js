@@ -4,7 +4,7 @@ import {
   sessionFailed,
   sessionSucceed,
 } from '../db/controllers/doctor.js'
-import { isDoctor } from '../db/middleware/authMiddleware.js'
+import { isDoctor } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
 

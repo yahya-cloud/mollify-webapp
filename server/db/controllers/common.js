@@ -20,24 +20,26 @@ export const searchModels = async (email) => {
 // @access Private
 export const deleteRequest = async (req, res) => {
   try {
-    const { personEmail } = req.body
+    const { id: instanceId } = req.body
     const { _id: id, userType } = req.user
     let result
+    console.log(instanceId)
 
     userType === 'patient'
       ? (result = await PatientModel.findByIdAndUpdate(
           id,
-          { $pull: { acceptedRequests: { email: personEmail } } },
+          { $pull: { acceptedRequests: { _id: instanceId } } },
           { new: true }
         ))
       : (result = await DoctorModel.findByIdAndUpdate(
           id,
-          { $pull: { requests: { email: personEmail } } },
+          { $pull: { requests: { _id: instanceId } } },
           { new: true }
         ))
 
     res.status(200).json({ result })
   } catch (error) {
     console.log(error)
+    res.status(500).json({ message: 'Internal Server Error' })
   }
 }

@@ -1,6 +1,6 @@
 import express from 'express'
 import { deleteRequest } from '../db/controllers/common.js'
-import { searchModels } from '../db/middleware/searchMiddleware.js'
+import { searchModels } from '../middleware/searchMiddleware.js'
 
 const router = express.Router()
 

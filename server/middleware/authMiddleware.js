@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import PatientModel from '../models/patient.js'
-import DoctorModel from '../models/doctor.js'
+import PatientModel from '../db/models/patient.js'
+import DoctorModel from '../db/models/doctor.js'
 
 dotenv.config()
 

@@ -1,31 +1,14 @@
-import mongoose from 'mongoose';
 
-
-export const commonSchema = {
-    photo: String,
-    name: String,
-    address: String,
-    userType: String,
-    email: String,
-    phoneNumber: String
+export const commonFields = {
+  photo: String,
+  name: { type: String, required: true },
+  address: { type: String, required: true },
+  userType: { type: String, required: true },
+  email: { type: String, required: true },
+  phoneNumber: { type: String, required: true },
 }
 export const number = {
-    type: Number,
-    default: 0
+  type: Number,
+  default: 0,
 }
-export const arraySchema = mongoose.Schema({
-    ...commonSchema,
-    time: String,
-    sessionType: String,
-    disorder: String,
-    gender: String
-})
-
-export const scheduleSchema =  mongoose.Schema({
-    name: String,
-    photo: String,
-    time: String,
-    sessionType: String,
-    disorder: String
-})
 

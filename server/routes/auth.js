@@ -6,7 +6,7 @@ import {
   updateUser,
   deleteUser,
 } from '../db/controllers/auth.js'
-import { searchModels } from '../db/middleware/searchMiddleware.js'
+import { searchModels } from '../middleware/searchMiddleware.js'
 
 const router = express.Router()
 

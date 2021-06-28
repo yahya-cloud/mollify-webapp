@@ -1,6 +1,6 @@
 # Mollify Webapp
 
-This is MERN stack web application which connects people suffering from mental disorders to a specified psychologists [Mollify](https://mollify-webapp.herokuapp.com/).
+This is MERN stack web application which connects people suffering from mental disorders to a specified psychologists. visit the live webapp here [Mollify](https://mollify-webapp.herokuapp.com/).
 
 ## Description
 

@@ -38,7 +38,7 @@ come back to root folder and then go to server folder make a .env file with two 
 ```SECRET```: 'any string value'
 
 then go to client folder and start the development server
-```npm run start``
+```npm run start```
 
 come back to root folder and start the backend server
-```npm run start``
+```npm run start```

@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000
 const server = http.Server(app)
 
 const io = new Server(server, {
-  cors: { origin: 'http://localhost:3000' },
+  cors: { origin: 'https://mollify-webapp.herokuapp.com' },
 })
 socketEvents(io)
 dotenv.config()
@@ -27,7 +27,6 @@ dotenv.config()
 app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
-
 
 if (process.env.NODE_ENV) {
   app.use(morgan('dev'))

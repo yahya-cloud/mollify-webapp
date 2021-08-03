@@ -50,7 +50,6 @@ export const socketEvents = (io) => {
     socket.on('sendMessage', ({ senderId, receiverId, text }) => {
       const user = getUser(receiverId)
       if (user) {
-        console.log(user)
         io.to(user.socketId).emit('getMessage', {
           senderId,
           text,

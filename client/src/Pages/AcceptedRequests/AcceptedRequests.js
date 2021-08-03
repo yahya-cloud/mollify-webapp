@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Backdrop from '@material-ui/core/Backdrop'
 import { useDispatch, useSelector } from 'react-redux'
-import { rejectRequest } from '../../store/actions/doctor'
-import { submitRating } from '../../store/actions/patient'
+import { sessionCompleted } from '../../store/actions/patient'
 import { makeStyles } from '@material-ui/core/styles'
 
 import GridContainer from '../../components/GridContainer/GridContainer'
@@ -29,20 +28,19 @@ const AcceptedRequests = () => {
   const submitRatingHandler = (rating) => {
     setShow(false)
     dispatch(
-      submitRating({ userRating: `star${rating}`, email: doctorData.email })
+      sessionCompleted({ userRating: `star${rating}`, doctorData: doctorData })
     )
-    dispatch(rejectRequest(doctorData._id))
   }
 
   const sessionCompleteHandler = (data) => {
     setShow(true)
-    setDoctorData(data.personData)
+    setDoctorData(data)
   }
 
   return (
     <div>
       <GridContainer
-        cardArray={user.acceptedRequests}
+        cardArray={user.schedules}
         userType='patient'
         redBtnFunc={sessionCompleteHandler}
         redBtnTxt='Session Completed'

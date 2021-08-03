@@ -1,45 +1,42 @@
-import React, { useState } from 'react';
-import {useDispatch} from 'react-redux';
-
-import Form from '../../components/Form/Form';
-import {signUp, signIn} from '../../store/actions/auth';
-
-import classes from './Register.module.css';
-
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import Form from '../../components/Form/Form'
+import { signUp, signIn } from '../../store/actions/auth'
+import classes from './Register.module.css'
+import FormImage from '../../assets/form.png'
 
 const Register = () => {
+  const [isSignUp, setIsSignUp] = useState(false)
+  const dispatch = useDispatch()
 
-    const [isSignUp, setIsSignUp] = useState(false);
-    //solving white space at bottom while switching from signup to signIn 
-    const [height, setHeight] = useState('100vh');
-    const dispatch = useDispatch();
-
-    const handleSubmit = (body) => {
-        if(isSignUp){
-        dispatch(signUp(body));
-        }else{
-            dispatch(signIn(body));
-        }
-    };
-
-    const signUpHandler = () => {
-        setIsSignUp(prevState => !prevState);
-        setHeight(prevState => {
-            if(prevState === '100vh') return 'min-content'
-            else return '100vh'
-        }
-        )
+  const handleSubmit = (body) => {
+    if (isSignUp) {
+      dispatch(signUp(body))
+    } else {
+      dispatch(signIn(body))
     }
+  }
 
-    return (
-        <div  style={{height:`${height}`}}  className={classes.registerContainer}>
-        <div className={`formContainer ${classes.formContainer}`}>
-        <h1>{isSignUp ? 'Get registered in Mollify' : 'Welcome back to Mollify' }</h1>
-        <Form signup={isSignUp} handleSubmit={handleSubmit}/>
-        <button className={classes.button} onClick={signUpHandler}>{isSignUp ? 'or SignIn' : 'or Signup'}</button>
-        </div>
-        </div>
-    )
+  const signUpHandler = () => {
+    setIsSignUp((prevState) => !prevState)
+  }
+
+  return (
+      <div className={classes.registerContainer}>
+          
+      <img className={classes.sideImg} src={FormImage} alt="form" />
+
+      <div className={classes.container2}>
+        <h1>
+          {isSignUp ? 'Sign Up with Mollify' : 'Welcome Back'}
+        </h1>
+        <Form signup={isSignUp} handleSubmit={handleSubmit} />
+        <button className={classes.button} onClick={signUpHandler}>
+          {isSignUp ? 'or SignIn' : 'or Signup'}
+        </button>
+      </div>
+    </div>
+  )
 }
 
 export default Register

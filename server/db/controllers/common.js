@@ -23,7 +23,6 @@ export const deleteRequest = async (req, res) => {
     const { id: instanceId } = req.body
     const { _id: id, userType } = req.user
     let result
-    console.log(instanceId)
 
     userType === 'patient'
       ? (result = await PatientModel.findByIdAndUpdate(
@@ -42,4 +41,21 @@ export const deleteRequest = async (req, res) => {
     console.log(error)
     res.status(500).json({ message: 'Internal Server Error' })
   }
+}
+
+// function to calculate rating
+export function calculateRating(allRatings, userRating){
+  const updatedRatings = { ...allRatings }
+
+  updatedRatings[userRating] = updatedRatings[userRating] + 1
+
+  const { star1, star2, star3, star4, star5 } = updatedRatings
+
+  const totalRating = star1 + star2 + star3 + star4 + star5
+
+  const updatedRating = Math.ceil(
+    (star1 * 1 + star2 * 2 + star3 * 3 + star4 * 4 + star5 * 5) / totalRating
+  )
+  //all doctor rating, calculated doctor rating
+  return (updatedRatings, updatedRating)
 }

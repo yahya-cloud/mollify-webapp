@@ -7,7 +7,9 @@ import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined'
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
 import NavigationOutlinedIcon from '@material-ui/icons/NavigationOutlined'
 import BuildOutlinedIcon from '@material-ui/icons/BuildOutlined'
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined'
+import PersonalVideoIcon from '@material-ui/icons/PersonalVideo'
+import ScheduleIcon from '@material-ui/icons/Schedule'
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline'
 
 const Navbar = () => {
   const { user } = useSelector((state) => state)
@@ -46,10 +48,17 @@ const Navbar = () => {
             className={classes.navItem}
             to='/acceptedRequests'>
             <PeopleAltOutlinedIcon className={classes.navIcon} /> Accepted
-            Requests
+            Request
           </NavLink>
         </>
       )}
+
+      <NavLink
+        activeClassName={classes.navItemActive}
+        className={classes.navItem}
+        to='/chat'>
+        <ChatBubbleOutlineIcon className={classes.navIcon} /> Chat
+      </NavLink>
 
       {/* setting active class when came from request page */}
       <NavLink
@@ -63,15 +72,25 @@ const Navbar = () => {
       <NavLink
         activeClassName={classes.navItemActive}
         className={classes.navItem}
-        to='/ourWorking'>
-        <BuildOutlinedIcon className={classes.navIcon} /> About us
+        isActive={() =>
+          location.pathname.slice(1, 10) === 'videoChat' ? 1 : 0
+        }
+        to='/videoChat/:chatId'>
+        <PersonalVideoIcon className={classes.navIcon} /> Video Sessions
       </NavLink>
 
       <NavLink
         activeClassName={classes.navItemActive}
         className={classes.navItem}
-        to='/settings'>
-        <SettingsOutlinedIcon className={classes.navIcon} /> Settings
+        to='/schedule'>
+        <ScheduleIcon className={classes.navIcon} /> Schedule
+      </NavLink>
+
+      <NavLink
+        activeClassName={classes.navItemActive}
+        className={classes.navItem}
+        to='/ourWorking'>
+        <BuildOutlinedIcon className={classes.navIcon} /> About us
       </NavLink>
     </div>
   )

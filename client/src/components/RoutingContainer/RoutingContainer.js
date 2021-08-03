@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 import classes from './RoutingContainer.module.css'
 import SettingsPage from '../../Pages/SettingsPage/SettingsPage'
@@ -10,19 +9,25 @@ import Dashboard from '../../Pages/Dashboard/Dashboard'
 import Doctors from '../../Pages/Doctors/Doctors'
 import PatientRequests from '../../Pages/PatientRequests/PatientRequests'
 import AcceptedRequests from '../../Pages/AcceptedRequests/AcceptedRequests'
+import DoctorSchedulePage from '../../Pages/DoctorSchedulePage/DoctorSchedulePage'
+import Chat from '../../Pages/Chat/Chat'
+import PatientSchedulePage from '../../Pages/PatientSchedulePage/PatientSchedulePage'
+import VideoChat from '../../Pages/VideoChat/VideoChat'
 
 // function to show doctor/ patient pages conditionally
-const RoutingContainer = () => {
-  const { user } = useSelector((state) => state)
+const RoutingContainer = (props) => {
   let pages = null
 
-  if (user.userType === 'doctor') {
+  if (props.userType === 'doctor') {
+    //parent switch not working because of empty tag
     pages = (
       <>
         <Switch>
           <Route path='/patientRequest'>
-            {' '}
-            <PatientRequests />{' '}
+            <PatientRequests />
+          </Route>
+          <Route path='/schedule'>
+            <DoctorSchedulePage />
           </Route>
           <Route path='/'>
             <Dashboard />
@@ -35,8 +40,10 @@ const RoutingContainer = () => {
       <>
         <Switch>
           <Route path='/acceptedRequests'>
-            {' '}
-            <AcceptedRequests />{' '}
+            <AcceptedRequests />
+          </Route>
+          <Route path='/schedule'>
+            <PatientSchedulePage />
           </Route>
           <Route path='/'>
             <Doctors />
@@ -53,11 +60,18 @@ const RoutingContainer = () => {
           <SettingsPage />
         </Route>
         <Route path='/ourWorking'>
-          {' '}
-          <OurWorking />{' '}
+          <OurWorking />
         </Route>
         <Route path='/navigate/:personAddress'>
           <Navigate />
+        </Route>
+
+        <Route path='/chat'>
+          <Chat />
+        </Route>
+
+        <Route path='/videoChat/:chatId'>
+          <VideoChat />
         </Route>
 
         {pages}

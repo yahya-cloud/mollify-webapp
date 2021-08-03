@@ -3,7 +3,7 @@ import { Grid } from '@material-ui/core'
 
 import classes from './Card.module.css'
 import Button from '../Button/Button'
-import CardInputs from './CardInputs/CardInputs'
+import CardInputs from '../../../Pages/Doctors/CardInputs/CardInputs'
 import { useHistory } from 'react-router'
 
 const Card = (props) => {
@@ -11,24 +11,6 @@ const Card = (props) => {
   let dataToFetch = ['name', 'email', 'phoneNumber', 'address']
   let user = props.userType
   const history = useHistory()
-
-
-  const [data, setData] = useState({
-    personData: props.person,
-    inputData: {
-      time: '',
-      sessionType: 'Home',
-      gender: 'Male',
-      disorder: 'Anxiety',
-    },
-  })
-
-  //changeHandler while user entering the data
-  const changeHandler = (e) => {
-    let updatedData = { ...data }
-    updatedData.inputData[e.target.name] = e.target.value
-    setData(updatedData)
-  }
 
   //Fetching data at different instances
   const infos = []
@@ -55,7 +37,7 @@ const Card = (props) => {
 
   //takes user to navigate page
   const navigateHandler = () => {
-    history.push(`/navigate/${data.personData.address}`)
+    history.push(`/navigate/${props.person.address}`)
   }
 
   return (
@@ -71,14 +53,13 @@ const Card = (props) => {
             })}
           </div>
         </div>
-        {props.showInputs && <CardInputs changeHandler={changeHandler} />}
 
         <div className={classes.btnBox}>
           {props.greenBtnFunc && (
             <Button
               btnType='btnCard'
               btnColor='btnGreen'
-              clickHandler={() => props.greenBtnFunc(data)}>
+              clickHandler={() => props.greenBtnFunc(props.person)}>
               {props.greenBtnTxt}
             </Button>
           )}
@@ -93,9 +74,9 @@ const Card = (props) => {
               <Button
                 btnType='btnCard'
                 btnColor='btnRed'
-                clickHandler={() => props.redBtnFunc(data)}>
+                clickHandler={() => props.redBtnFunc(props.person)}>
                 {props.redBtnTxt}
-              </Button>{' '}
+              </Button>
             </>
           )}
         </div>

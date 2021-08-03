@@ -1,0 +1,52 @@
+.conversation {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    background-color: rgb(248, 248, 248);
+    border-bottom: 1px solid var(--color-grey1);
+  }
+  
+  .active {
+    background-color: var(--color-blue);
+  }
+  
+  .conversationTexts {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .conversationName {
+    font-weight: 600;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    color: #000;
+  }
+  
+  .conversationLastText {
+    font-size: 1.2rem;
+    color: rgb(66, 66, 66);
+    margin-top: 0.4rem;
+  }
+  
+  .conversation:hover {
+    background-color: var(--color-blue);
+  }
+  
+  .conversationImg {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .conversation {
+      padding: 13px;
+    }
+    .conversationName {
+      display: none;
+    }
+  }
+  

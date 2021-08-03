@@ -69,10 +69,7 @@ export const signUp = async (req, res) => {
 
     res.status(200).json({ result, token })
   } catch (error) {
-    
-    res
-      .status(500)
-      .json({ message: error.message })
+    res.status(500).json({ message: error.message })
   }
 }
 
@@ -154,6 +151,26 @@ export const deleteUser = async (req, res) => {
       : PatientModel
     ).findByIdAndDelete(id)
     res.json({ message: 'Profile deleted Successfully' })
+  } catch (error) {
+    console.log(error)
+    res.json({ message: 'We were unable to delete your profile' })
+  }
+}
+
+// @desc  GET other user
+// @route GET/api/auth/getOtherUser
+// @access Private
+export const getOtherUser = async (req, res) => {
+  try {
+    const { userId } = req.params
+
+    //quick fix
+    const user = await (req.user.userType === 'doctor'
+      ? PatientModel
+      : DoctorModel
+    ).findById(userId)
+
+    res.json({ name: user.name, photo: user.photo })
   } catch (error) {
     console.log(error)
     res.json({ message: 'We were unable to delete your profile' })

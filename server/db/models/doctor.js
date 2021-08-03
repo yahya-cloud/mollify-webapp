@@ -1,17 +1,22 @@
 import mongoose from 'mongoose'
-import { commonFields, number } from './common.js'
+import { commonFields, number, scheduleFields } from './common.js'
 
-const arrayFields = {
+const requestSchema = mongoose.Schema({
   photo: String,
   name: { type: String, required: true, default: undefined },
   address: { type: String, required: true },
   email: { type: String, required: true },
   phoneNumber: { type: String, required: true },
-  time: { type: String, required: true },
   sessionType: { type: String, required: true },
   disorder: { type: String, required: true },
   gender: { type: String, required: true },
-}
+  time: { type: Date, required: true },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'PatientModel',
+  },
+})
 
 // DOCTOR SCHEMA
 const doctorSchema = mongoose.Schema({
@@ -30,6 +35,7 @@ const doctorSchema = mongoose.Schema({
   sessions: {
     clinic: number,
     home: number,
+    virtual: number,
     failed: number,
     total: number,
   },
@@ -40,8 +46,12 @@ const doctorSchema = mongoose.Schema({
     depression: number,
     eating: number,
   },
-  schedules: [{ ...arrayFields }],
-  requests: [{ ...arrayFields }],
+  schedules: [
+    {
+      ...scheduleFields,
+    },
+  ],
+  requests: [requestSchema],
 })
 
 const DoctorModel = mongoose.model('Doctor', doctorSchema)

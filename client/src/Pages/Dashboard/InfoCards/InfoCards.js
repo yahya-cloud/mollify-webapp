@@ -9,6 +9,7 @@ import PersonIcon from '@material-ui/icons/Person'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
 import ClearIcon from '@material-ui/icons/Clear'
 import StarIcon from '@material-ui/icons/Star'
+import ComputerIcon from '@material-ui/icons/Computer'
 
 const InfoCards = (props) => {
   return (
@@ -41,13 +42,13 @@ const InfoCards = (props) => {
 
       <Grid item xs={12} sm={6} md={4}>
         <div className={`${classes.card} ${classes.cardInfo}`}>
-          <h2>Failed Session</h2>
+          <h2>Virtual Session</h2>
 
           <div className={classes.iconInfo}>
             <div className={`${classes.iconBox} ${classes.iconBox__failed}`}>
-              <ClearIcon style={{ color: '#FF1E1E' }} />
+              <ComputerIcon style={{ color: 'rgb(255 156 156)' }} />
             </div>
-            <h1>{props.failed}</h1>
+            <h1>{props.virtual}</h1>
           </div>
         </div>
       </Grid>

@@ -1,0 +1,46 @@
+
+.InputContainer {
+  width: 40%;
+  padding: 4rem;
+  height: min-content;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: min-content;
+  background-color: var(--color-white);
+  border-radius: 20px;
+}
+
+.InputContainer > h1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--color-black);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.inputBox {
+  display: flex;
+  align-items: center;
+  flex: 20%;
+  padding: 1rem;
+  color: var(--color-black);
+}
+
+.inputBox h3 {
+  font-size: 1.6rem;
+  margin: 1rem 1.5rem;
+}
+
+.inputBox > select,
+.inputBox > input {
+  margin-left: 0.5rem;
+  border: none;
+  border-bottom: 1px solid var(--color-grey1);
+  width: 15rem;
+}
+
+.inputBox > input:focus,
+.inputBox > select:focus {
+  outline: none;
+}

@@ -1,72 +1,72 @@
-.Card{
-    display: flex;
-    flex-direction: column;
-    background-color: var(--color-white);
-    width: 100%;
-    height: min-content;
-    border-radius: 20px;
-    box-shadow: var(--box-shadow);
-    padding: 2rem;
+.Card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  width: 100%;
+  height: min-content;
+  border-radius: 20px;
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
 }
 
-.cardComponent{
-    width: 100%;
-    display: flex;
+.cardComponent {
+  width: 100%;
+  display: flex;
+  height: 25rem;
 }
 
-.btnBox{
-    display: flex;
-    flex-wrap: wrap;
+.btnBox {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .btnBox > * {
-    flex: 1;
+  flex: 1;
 }
 
-.cardPhoto{
-    width: 20rem;
-    height: 18rem;
-    object-fit: cover;
-    background-size: cover;
-    border-radius: 50%;
+.cardPhoto {
+  width: 23rem;
+  height: 15rem;
+  object-fit: cover;
+  background-size: cover;
+  border-radius: 50%;
 }
 
-
-.cardInfo{
-    display: flex;
-    font-family: var(--font-number);
-    margin: 1.5rem;
-    flex: 1;
+.cardInfo {
+  display: flex;
+  font-family: var(--font-number);
+  margin: 1.5rem;
+  flex: 1;
 }
 
-.cardInfo h3{
-    font-size: 1.6rem;
-    font-family: inherit;
-    font-weight: 700;
-    margin-right: 10px;
+.cardInfo h3 {
+  font-size: 1.6rem;
+  font-family: inherit;
+  font-weight: 700;
+  margin-right: 10px;
 }
 
-.cardInfo p{
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--color-grey2);
-    
+.cardInfo p {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--color-grey2);
 }
 
-@media only screen and (max-width: 600px){
-    .cardComponent{
-        flex-direction: column;
-    }
+@media only screen and (max-width: 600px) {
+  .cardComponent {
+    flex-direction: column;
+    height: min-content;
+  }
 
-    .Card{
-        padding: 1rem;
-    }
+  .Card {
+    padding: 1rem;
+  }
 
-    .btnBox > * {
-        flex: 95%;
-    }
-    .cardPhoto{
-        align-self: center;
-    }
-
+  .btnBox > * {
+    flex: 95%;
+  }
+  .cardPhoto {
+    width: 15rem;
+    align-self: center;
+  }
 }

@@ -1,50 +1,74 @@
+import { v4 as uuidV4 } from 'uuid'
+
 import PatientModel from '../models/patient.js'
 import DoctorModel from '../models/doctor.js'
+import ConversationModel from '../models/conversation.js'
 
 // @desc  Accept a session
 // @route POST/api/doctor/acceptSession
 // @access Private
 export const acceptSession = async (req, res) => {
   try {
-    const { name, email, address, phoneNumber, photo, _id: id } = req.user
+    const {
+      name: doctorName,
+      email: doctorEmail,
+      address: doctorAddress,
+      phoneNumber: doctorNumber,
+      photo: doctorPhoto,
+      _id: doctorId,
+    } = req.user
+
     const {
       time,
       sessionType,
       disorder,
-      name: personName,
-      photo: personPhoto,
-      email: personEmail,
+      userId,
+      phoneNumber: patientNumber,
+      address: patientAddress,
+      name: patientName,
+      photo: patientPhoto,
+      email: patientEmail,
       _id: requestId,
     } = req.body.person
 
-     await PatientModel.findOneAndUpdate(
-      { email: personEmail },
-      {
-        $push: {
-          acceptedRequests: {
-            name: name,
-            time: time,
-            sessionType: sessionType,
-            email: email,
-            address: address,
-            phoneNumber: phoneNumber,
-            photo: photo,
-          },
+    const newConversation = new ConversationModel({
+      members: [doctorId.toString(), userId],
+    })
+    const savedConversation = await newConversation.save()
+
+    await PatientModel.findByIdAndUpdate(userId, {
+      $push: {
+        schedules: {
+          name: doctorName,
+          time: time,
+          sessionType: sessionType,
+          email: doctorEmail,
+          address: doctorAddress,
+          phoneNumber: doctorNumber,
+          photo: doctorPhoto,
+          disorder: disorder.toLowerCase(),
+          otherUserId: doctorId,
+          conversationId: savedConversation._id,
         },
-      }
-    )
- 
+      },
+    })
+
     const result = await DoctorModel.findByIdAndUpdate(
-      id,
+      doctorId,
       {
         $pull: { requests: { _id: requestId } },
         $push: {
           schedules: {
-            name: personName,
+            name: patientName,
             time: time,
+            number: patientNumber,
+            address: patientAddress,
+            email: patientEmail,
             sessionType: sessionType,
-            photo: personPhoto,
+            photo: patientPhoto,
             disorder: disorder.toLowerCase(),
+            conversationId: savedConversation._id,
+            otherUserId: userId,
           },
         },
       },
@@ -63,8 +87,13 @@ export const acceptSession = async (req, res) => {
 // @access Private
 export const sessionFailed = async (req, res) => {
   try {
-    const id = req.user._id
+    const { _id: id, schedules } = req.user
     const patientId = req.body.personId
+
+    const { conversationId } = schedules.find((el) => el._id == patientId)
+
+    await ConversationModel.findByIdAndDelete(conversationId)
+
     const result = await DoctorModel.findByIdAndUpdate(
       id,
       {
@@ -86,8 +115,12 @@ export const sessionFailed = async (req, res) => {
 // @access Private
 export const sessionSucceed = async (req, res) => {
   try {
-    const { price, _id } = req.user
+    const { price, _id, schedules } = req.user
     const { sessionType, disorder, _id: personId } = req.body.person
+
+    const { conversationId } = schedules.find((el) => el._id == personId)
+
+    await ConversationModel.findByIdAndDelete(conversationId)
 
     const result = await DoctorModel.findOneAndUpdate(
       { _id: _id },
@@ -102,6 +135,7 @@ export const sessionSucceed = async (req, res) => {
       },
       { new: true }
     )
+
     res.status(200).json({ result })
   } catch (error) {
     console.log(error)

@@ -32,7 +32,7 @@ const DoughnutCard = (props) => {
               boxWidth: 40,
               fontSize: 15,
               fontColor: '#000',
-              padding: 20,
+              padding: 15,
             },
           },
 

@@ -7,6 +7,7 @@ import NoData from '../UI/NoData/NoData'
 
 const GridContainer = (props) => {
   let navigate = true
+  //navigate should not be true if user is patient and on root page
   navigate = !(
     useHistory().location.pathname === '/' && props.userType === 'patient'
   )

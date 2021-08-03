@@ -1,0 +1,48 @@
+.chatContainer {
+  display: flex;
+  height: 100%;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  box-shadow: -3px 5px 30px -10px rgba(158, 158, 158, 0.78);
+  -webkit-box-shadow: -3px 5px 30px -10px rgba(158, 158, 158, 0.78);
+  -moz-box-shadow: -3px 5px 30px -10px rgba(158, 158, 158, 0.78);
+}
+
+.chatContainer > div > h1 {
+  font-weight: 500;
+  font-size: 2.8rem;
+  border-bottom: 1px solid var(--color-grey2);
+  padding: 1rem 1.5rem;
+}
+
+.chatMenu {
+  flex: 1;
+  border-right: 1px solid var(--color-grey1);
+}
+.chatPanelContainer {
+  flex: 3;
+  position: relative;
+}
+
+@media only screen and (max-width: 700px) {
+  .chatContainer {
+    flex-direction: column;
+  }
+
+  .chatPanelContainer {
+    height: 20rem;
+    flex: 6;
+  }
+
+  .chatContainer > div > h1 {
+    display: none;
+  }
+
+  .chatMenu {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    overflow-x: scroll;
+    border-bottom: 1px solid rgb(248, 248, 248);
+  }
+}

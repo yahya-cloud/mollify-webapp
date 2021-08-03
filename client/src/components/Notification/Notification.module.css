@@ -1,0 +1,16 @@
+.notificationContainer {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-blue2);
+  width: max-content;
+  padding: 2rem;
+  margin: 2rem;
+  position: absolute;
+  border-radius: 5px;
+  left: 0;
+}
+
+.notificationContainer h1 {
+  margin-right: 1rem;
+  color: var(--color-white);
+}

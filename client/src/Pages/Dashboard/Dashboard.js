@@ -12,7 +12,7 @@ import InfoCards from './InfoCards/InfoCards'
 const Dashboard = () => {
   const user = useSelector((state) => state.user)
 
-  const { clinic, home, failed, total } = user.sessions
+  const { clinic, home, failed, total, virtual } = user.sessions
   const { earnings, rating } = user
   const disorders = []
   for (let disorder in user.disorders) {
@@ -29,6 +29,7 @@ const Dashboard = () => {
           rating={rating}
           total={total}
           failed={failed}
+          virtual={virtual}
         />
 
         {/* schedule card and pending card */}
@@ -47,9 +48,9 @@ const Dashboard = () => {
           <div className={`${classes.card} ${classes.cardGraph}`}>
             <h2>Sessions Types</h2>
             <DoughnutCard
-              labels={['Home', 'Clinic']}
-              data={[`${home}`, `${clinic}`]}
-              colors={['#008EB8', '#2E8473']}
+              labels={['Home', 'Clinic', 'Virtual']}
+              data={[`${home}`, `${clinic}`, `${virtual}`]}
+              colors={['#008EB8', '#2E8473', '#FF9C9C']}
             />
           </div>
         </Grid>

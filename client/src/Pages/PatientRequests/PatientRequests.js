@@ -8,11 +8,11 @@ const PatientRequests = () => {
   const dispatch = useDispatch()
 
   const acceptRequestHandler = (data) => {
-    dispatch(acceptRequest(user, data.personData))
+    dispatch(acceptRequest(user, data))
   }
 
   const rejectRequestHandler = (data) => {
-    dispatch(rejectRequest(data.personData._id))
+    dispatch(rejectRequest(data._id))
   }
 
   return (

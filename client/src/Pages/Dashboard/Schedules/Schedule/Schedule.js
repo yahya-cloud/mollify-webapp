@@ -17,7 +17,7 @@ const Schedule = (props) => {
         <p>{name}</p>
       </div>
 
-      <p>{time}</p>
+      <p>{`${new Date(time).getHours()}: ${new Date(time).getMinutes()}`}</p>
       {props.schedule && <p>{sessionType}</p>}
 
       <div className={classes.btnBox}>

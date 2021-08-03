@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 50rem;
 }
 .mainForm > button {
     width: 30%;
@@ -20,6 +21,9 @@
 @media only screen and (max-width:900px){
     .form{
        margin-bottom: 4rem;
+    }
+    .mainForm{
+    width: 90%;
     }
 }
 

@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 
 export const commonFields = {
   photo: String,
@@ -12,3 +13,18 @@ export const number = {
   default: 0,
 }
 
+export const scheduleFields = {
+  photo: String,
+  name: { type: String },
+  address: { type: String },
+  email: { type: String },
+  phoneNumber: { type: String },
+  time: { type: Date },
+  sessionType: { type: String },
+  disorder: { type: String },
+  otherUserId: { type: String },
+  conversationId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'ConversationModel',
+  },
+}

@@ -1,0 +1,56 @@
+.userBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: min-content;
+  background-color: var(--color-white);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: -3px 5px 30px -10px rgba(158, 158, 158, 0.78);
+  -webkit-box-shadow: -3px 5px 30px -10px rgba(158, 158, 158, 0.78);
+  -moz-box-shadow: -3px 5px 30px -10px rgba(158, 158, 158, 0.78);
+}
+
+.userInfo {
+  display: flex;
+}
+
+.userPhoto {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  margin: 2rem 1rem;
+}
+
+.userInfo .personInfo:not(:first-child) {
+  margin-right: 1rem;
+}
+
+.personInfo {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
+.personInfo span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #686868;
+}
+
+.personInfo h4 {
+  color: var(--color-black);
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: var(--font-number);
+}
+
+.callButton {
+  font-size: 1.3rem !important;
+  margin: 1rem !important;
+}

@@ -69,4 +69,3 @@ const Navigate = (props) => {
 }
 
 export default Navigate
-//pk.eyJ1IjoieWFoeWExMjMiLCJhIjoiY2tuOG8ydmc2MDV3ZTJwbXJyOHp3d2EzaCJ9.1gLWywSZj208OsijDUCE6A

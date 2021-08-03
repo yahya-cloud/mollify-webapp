@@ -1,0 +1,39 @@
+.chatBoxBottom {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(232, 232, 232);
+  padding: 1rem;
+  color: rgb(141, 141, 141);
+}
+
+.personInfoContainer {
+  font-family: var(--font-number);
+  width: 25rem;
+  height: 20rem;
+  padding-left: 1.5rem;
+  background-color: 'green';
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-around;
+}
+
+.personInfo {
+  display: flex;
+  align-items: center;
+}
+
+.personInfo span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #686868;
+}
+
+.personInfo h4 {
+  color: var(--color-grey2);
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}

@@ -66,15 +66,18 @@ export const sessionCompleted = async (req, res) => {
     const { userRating, doctorData } = req.body
     const { _id: scheduleId, email: doctorEmail } = doctorData
 
-    const allRatings = await DoctorModel.findOne({ doctorEmail }, 'allRatings')
+    const { allRatings } = await DoctorModel.findOne(
+      { email: doctorEmail },
+      'allRatings'
+    )
 
     const { updatedRatings, updatedRating } = calculateRating(
       allRatings,
       userRating
     )
-
+ 
     await DoctorModel.findOneAndUpdate(
-      { email: req.body.email },
+      { email: doctorEmail },
       { allRatings: updatedRatings, rating: updatedRating }
     )
 

@@ -44,7 +44,8 @@ export const deleteRequest = async (req, res) => {
 }
 
 // function to calculate rating
-export function calculateRating(allRatings, userRating){
+export function calculateRating(allRatings, userRating) {
+ 
   const updatedRatings = { ...allRatings }
 
   updatedRatings[userRating] = updatedRatings[userRating] + 1
@@ -57,5 +58,5 @@ export function calculateRating(allRatings, userRating){
     (star1 * 1 + star2 * 2 + star3 * 3 + star4 * 4 + star5 * 5) / totalRating
   )
   //all doctor rating, calculated doctor rating
-  return (updatedRatings, updatedRating)
+  return { updatedRatings, updatedRating }
 }

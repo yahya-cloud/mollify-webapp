@@ -1,27 +1,34 @@
-input[type='radio']{
-    display: none;
+input[type='radio'] {
+  display: none;
 }
 
-.ratingBox{
-display: flex;
-flex-direction: column;
-align-items: center;
-width: max-content;
-background-color: #fff;
-padding: 3rem;
-color: #000;
-border-radius: 5px;
+.ratingBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  background-color: #fff;
+  padding: 3rem;
+  color: #000;
+  border-radius: 5px;
+  position: relative;
 }
-.ratingBox h1{
-    font-size: 4rem;
-    font-weight: 500;
-}
-
-.ratingBox > div{
-    margin: 1rem;
+.ratingBox h1 {
+  font-size: 4rem;
+  font-weight: 500;
 }
 
-.button{
-   font-size: 2rem!important;
-   color: #fff;
+.ratingBox > div {
+  margin: 1rem;
+}
+
+.button {
+  font-size: 2rem !important;
+  color: #fff;
+}
+
+.closeButton {
+  position: absolute !important;
+  top: 2% !important;
+  right: 2% !important;
 }

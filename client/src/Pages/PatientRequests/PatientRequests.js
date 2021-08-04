@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import GridContainer from '../../components/GridContainer/GridContainer'
+import Meta from '../../components/Meta/Meta'
 import { acceptRequest, rejectRequest } from '../../store/actions/doctor'
 
 const PatientRequests = () => {
@@ -16,14 +17,17 @@ const PatientRequests = () => {
   }
 
   return (
-    <GridContainer
-      cardArray={user.requests}
-      userType='doctor'
-      greenBtnFunc={acceptRequestHandler}
-      redBtnFunc={rejectRequestHandler}
-      greenBtnTxt='Accept Request'
-      redBtnTxt='Delete Request'
-    />
+    <>
+      <Meta title='Mollify | Patient Requests' />
+      <GridContainer
+        cardArray={user.requests}
+        userType='doctor'
+        greenBtnFunc={acceptRequestHandler}
+        redBtnFunc={rejectRequestHandler}
+        greenBtnTxt='Accept Request'
+        redBtnTxt='Delete Request'
+      />
+    </>
   )
 }
 

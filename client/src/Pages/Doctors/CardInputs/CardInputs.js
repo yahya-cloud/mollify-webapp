@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Button from '../../../components/UI/Button/Button'
 import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars'
 import classes from './cardInputs.module.css'
+import { IconButton } from '@material-ui/core'
+import CancelIcon from '@material-ui/icons/Cancel'
 
 const CardInputs = (props) => {
   const [data, setData] = useState({
@@ -10,7 +12,6 @@ const CardInputs = (props) => {
     gender: 'Male',
     disorder: 'Anxiety',
   })
-
 
   const changeHandler = (e) => {
     let updatedData = { ...data }
@@ -25,6 +26,14 @@ const CardInputs = (props) => {
 
   return (
     <form className={classes.InputContainer}>
+      <IconButton
+        onClick={() => props.closeForm()}
+        color='secondary'
+        aria-label='delete'
+        className={classes.closeButton}
+        size='small'>
+        <CancelIcon fontSize='medium' />
+      </IconButton>
       <h1>Please fill the following details</h1>
       <div className={classes.inputBox}>
         <h3>Time:</h3>

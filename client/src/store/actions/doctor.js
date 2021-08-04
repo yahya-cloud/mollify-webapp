@@ -8,8 +8,8 @@ export const acceptRequest = (user, person) => async (dispatch) => {
   dispatch({ type: USER, payload: data.result })
 }
 
-export const sessionFailed = (personId) => async (dispatch) => {
-  const params = { personId }
+export const sessionFailed = (sessionId) => async (dispatch) => {
+  const params = { sessionId }
   const data = await loaderFunction(params, api.sessionFailed, dispatch)
   dispatch({ type: USER, payload: data.result })
 }

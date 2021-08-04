@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000
 const server = http.Server(app)
 
 const io = new Server(server, {
-  cors: { origin: 'https://mollify-webapp.herokuapp.com/' },
+  cors: { origin: 'https://mollify-webapp.herokuapp.com' },
 })
 socketEvents(io)
 dotenv.config()

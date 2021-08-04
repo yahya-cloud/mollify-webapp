@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { SocketContext } from '../../../service/socket'
+import { SocketContext } from '../../../socket/socket'
 
 import ChatBoxBottom from './ChatBoxBottom/ChatBoxBottom'
 import classes from './ChatPanel.module.css'
@@ -11,35 +11,35 @@ const ChatPanel = ({ currentChat, user }) => {
   const [showUser, setShowUser] = useState(true)
   const {
     callAccepted,
-    leaveCall,
-    answerCall,
     userVideo,
-    callUser,
     callMade,
     otherUser,
     myVideo,
-    call,
     pageChanged,
-    me,
+    leaveCall,
   } = useContext(SocketContext)
 
-  //to leave call when changing chat
-  // useEffect(() => {
-  //   if (otherUser) {
-  //     leaveCall()
-  //   }
-  // }, [currentChat])
+  // to leave call when changing chat
+  //runs only when chat is changed
+  useEffect(() => {
+    if (otherUser) {
+      leaveCall()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentChat])
 
   //stop webcam when page is changed
   useEffect(() => {
     return () => {
       pageChanged()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <div className={classes.chatBox}>
       <div className={classes.chatBoxTop}>
+        {/* answer button shows when call is coming */}
         <AnswerBtn />
         <video
           id='userVideo'
@@ -72,8 +72,6 @@ const ChatPanel = ({ currentChat, user }) => {
         />
       )}
     </div>
-
-    // <button onClick={makeCall}> make call</button>
   )
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import classes from './ChatBoxBottom.module.css'
-import { SocketContext } from '../../../../service/socket'
+import { SocketContext } from '../../../../socket/socket'
 
 import IconButton from '@material-ui/core/IconButton'
 import CallEndIcon from '@material-ui/icons/CallEnd'
@@ -12,7 +12,6 @@ import Fade from '@material-ui/core/Fade'
 
 const ChatBoxBottom = ({ show, showFunction, currentChat }) => {
   const [anchorEl, setAnchorEl] = useState(null)
-
 
   const { leaveCall } = useContext(SocketContext)
   const handleClick = () => {

@@ -5,11 +5,12 @@ import Button from '../../components/UI/Button/Button'
 import Input from '../../components/Form/Input/Input'
 
 import { updateUser } from '../../store/actions/auth'
+import Meta from '../../components/Meta/Meta'
 
 const SettingsPage = () => {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
-  const { photo, name, address, _id, phoneNumber, userType, email } = user
+  const { photo, name, address, phoneNumber } = user
 
   const [inputData, setInputData] = useState({
     photo: { type: 'photo', name: 'photo', value: photo },
@@ -68,6 +69,7 @@ const SettingsPage = () => {
 
   return (
     <div className='formContainer'>
+      <Meta title='Mollify | Settings Page'/>
       <h1>Edit Your Profile</h1>
       <form className='mainForm' onSubmit={(e) => formSubmitHandler(e)}>
         {formInputs.map((el) => {

@@ -33,6 +33,7 @@ const ContextProvider = ({ children }) => {
         })
     }
 
+    //sets eventListeners when app.js loads
     socket.on('callUser', ({ signal, socketId, chatId, userName }) => {
       setCall({ isReceivingCall: true, socketId, signal, chatId, userName })
     })
@@ -46,7 +47,6 @@ const ContextProvider = ({ children }) => {
   }
 
   const answerCall = () => {
-    console.log(stream)
     setCallAccepted(true)
     setOtherUser(true)
     const peer = new Peer({

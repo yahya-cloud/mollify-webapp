@@ -7,7 +7,6 @@ import LocalHospitalIcon from '@material-ui/icons/LocalHospital'
 import HomeIcon from '@material-ui/icons/Home'
 import PersonIcon from '@material-ui/icons/Person'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
-import ClearIcon from '@material-ui/icons/Clear'
 import StarIcon from '@material-ui/icons/Star'
 import ComputerIcon from '@material-ui/icons/Computer'
 

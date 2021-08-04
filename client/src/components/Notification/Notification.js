@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Button } from '@material-ui/core'
-import { SocketContext } from '../../service/socket'
+import { SocketContext } from '../../socket/socket'
 import { useHistory } from 'react-router-dom'
 
 import classes from './Notification.module.css'

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Route, useHistory } from 'react-router-dom'
 import decode from 'jwt-decode'
 import { getUser, logOut } from './store/actions/auth'
-import socket, { ContextProvider } from './service/socket'
+import socket, { ContextProvider } from './socket/socket'
 
 import Register from './Pages/Register/Register'
 import Header from './components/Header/Header'

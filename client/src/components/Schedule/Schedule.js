@@ -1,6 +1,7 @@
 import React from 'react'
 import Calendar from '../Calendar/Calendar'
 import ScheduleTable from './ScheduleTable/ScheduleTable'
+import Meta from '../Meta/Meta'
 
 import NoData from '../UI/NoData/NoData'
 
@@ -15,6 +16,7 @@ const Schedule = ({user, redBtnFunc, greenBtnFunc}) => {
 
   return (
     <>
+      <Meta title='Mollify | Schedule'/>
       {user.schedules.length !== 0 ? (
         <div>
           <h1 className='headingPrimary'>Schedule Table</h1>

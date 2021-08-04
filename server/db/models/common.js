@@ -23,8 +23,4 @@ export const scheduleFields = {
   sessionType: { type: String },
   disorder: { type: String },
   otherUserId: { type: String },
-  conversationId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'ConversationModel',
-  },
 }

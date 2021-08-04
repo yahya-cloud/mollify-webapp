@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import StarIcon from '@material-ui/icons/Star'
 import Button from '@material-ui/core/Button'
-
+import { IconButton } from '@material-ui/core'
+import CancelIcon from '@material-ui/icons/Cancel'
 import classes from './RateCard.module.css'
 
 const RateCard = (props) => {
@@ -15,6 +16,14 @@ const RateCard = (props) => {
 
   return (
     <div className={classes.ratingBox}>
+      <IconButton
+        onClick={() => props.closeForm()}
+        color='secondary'
+        aria-label='delete'
+        className={classes.closeButton}
+        size='small'>
+        <CancelIcon fontSize='medium' />
+      </IconButton>
       <h1>Please Rate the Doctor</h1>
       <div className={classes.starContainer}>
         {/* 5 star rating  */}

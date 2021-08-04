@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import GridContainer from '../../components/GridContainer/GridContainer'
 import RateCard from './RateCard/RateCard'
+import Meta from '../../components/Meta/Meta'
 
 //modal for rating
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +40,7 @@ const AcceptedRequests = () => {
 
   return (
     <div>
+      <Meta title='Mollify | Accepted Requests'/>
       <GridContainer
         cardArray={user.schedules}
         userType='patient'
@@ -46,7 +48,7 @@ const AcceptedRequests = () => {
         redBtnTxt='Session Completed'
       />
       <Backdrop open={show} className={classes.backdrop}>
-        <RateCard btnFunc={submitRatingHandler} />
+        <RateCard closeForm={setShow} btnFunc={submitRatingHandler} />
       </Backdrop>
     </div>
   )

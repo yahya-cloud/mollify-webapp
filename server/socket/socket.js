@@ -1,4 +1,5 @@
 export const socketEvents = (io) => {
+  //users array to find user by id and emit to its socket
   let users = []
 
   const addUser = (userId, socketId) => {
@@ -15,9 +16,6 @@ export const socketEvents = (io) => {
   }
 
   io.on('connection', (socket) => {
-    //when connect
-    // console.log('a user connected ' + socket.id)
-
     //adding user by taking userId
     socket.on('addUser', (userId) => {
       addUser(userId, socket.id)

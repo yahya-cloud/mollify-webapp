@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useSelector } from 'react-redux'
 import classes from './CurrentUser.module.css'
 import Button from '@material-ui/core/Button'
-import { SocketContext } from '../../../../service/socket'
+import { SocketContext } from '../../../../socket/socket'
 
 const CurrentUser = ({ currentChat }) => {
-  const { callUser, call, leaveCall, callAccepted, stream } =
-    useContext(SocketContext)
+  const { callUser } = useContext(SocketContext)
   const { user } = useSelector((state) => state)
 
   return (
@@ -40,8 +39,6 @@ const CurrentUser = ({ currentChat }) => {
           color='primary'>
           Make Call
         </Button>
-
-  
       </div>
     </div>
   )

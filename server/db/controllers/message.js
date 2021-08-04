@@ -8,7 +8,6 @@ export const sendMessage = async (req, res) => {
 
   try {
     const savedMessage = await newMessage.save()
-    console.log(savedMessage)
     res.status(200).json(savedMessage)
   } catch (error) {
     res.status(500).json({ message: error })

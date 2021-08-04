@@ -1,6 +1,7 @@
 import React from 'react';
 import './OurWorking.css';
 import {Bar} from 'react-chartjs-2';
+import Meta from '../../components/Meta/Meta';
 
 const OurWorking = () => {
 
@@ -16,6 +17,7 @@ const OurWorking = () => {
 
     return (
         <div>
+            <Meta title='Mollify | Our Working'/>
             <div id="home" className=' home__section'>
            
            <div 

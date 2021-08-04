@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Grid } from '@material-ui/core'
 
 import classes from './Card.module.css'
 import Button from '../Button/Button'
-import CardInputs from '../../../Pages/Doctors/CardInputs/CardInputs'
 import { useHistory } from 'react-router'
 
 const Card = (props) => {

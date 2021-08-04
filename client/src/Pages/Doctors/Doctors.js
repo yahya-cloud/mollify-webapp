@@ -9,6 +9,7 @@ import { HIDELOADER, SHOWLOADER } from '../../store/actions/actionTypes'
 import { requestSession } from '../../store/actions/patient'
 import GridContainer from '../../components/GridContainer/GridContainer'
 import CardInputs from './CardInputs/CardInputs'
+import Meta from '../../components/Meta/Meta'
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -40,7 +41,7 @@ const Doctors = () => {
 
   //api call to show all doctors
   useEffect(() => {
-    (async function getDoctors() {
+    ;(async function getDoctors() {
       dispatch({ type: SHOWLOADER })
       let { data } = await api.getDoctors()
       dispatch({ type: HIDELOADER })
@@ -52,6 +53,7 @@ const Doctors = () => {
     <>
       {doctors !== null ? (
         <>
+          <Meta title='Mollify | Doctors' />
           <GridContainer
             cardArray={doctors}
             userType='patient'
@@ -59,11 +61,8 @@ const Doctors = () => {
             greenBtnTxt='Request Session'
             greenBtnFunc={requestFormHandler}
           />
-          <Backdrop
-            open={show}
-            className={classes.backdrop}
-            >
-            <CardInputs submitFunction={requestSessionHandler} />
+          <Backdrop open={show} className={classes.backdrop}>
+            <CardInputs closeForm={setShow} submitFunction={requestSessionHandler} />
           </Backdrop>
         </>
       ) : null}

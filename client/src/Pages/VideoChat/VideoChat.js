@@ -5,7 +5,8 @@ import { useParams } from 'react-router'
 import classes from './VideoChat.module.css'
 import VideoConversation from './VideoConversation/VideoConversation'
 import SelectVideo from '../../components/UI/SelectVideo/SelectVideo'
-import { SocketContext } from '../../service/socket'
+import { SocketContext } from '../../socket/socket'
+import Meta from '../../components/Meta/Meta'
 
 const VideoChat = () => {
   const { user } = useSelector((state) => state)
@@ -14,13 +15,15 @@ const VideoChat = () => {
   const { setMe } = useContext(SocketContext)
   const { chatId } = useParams()
 
-
+  //when a user comes by clicking notification
   useEffect(() => {
-    const chat = conversations.find((el) => el.conversationId == chatId)
+    const chat = conversations.find((el) => el.conversationId === chatId)
     if (chat) {
       setCurrentChat(chat)
       setMe(true)
     }
+    //just want to render one time when component mounts
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const currentChatHandler = (el) => {
@@ -29,10 +32,11 @@ const VideoChat = () => {
   }
   return (
     <div className={classes.chatContainer}>
+      <Meta title='Mollify | Video Conferences ' />
       <div className={classes.chatMenu}>
         <h1>Video Conferences</h1>
         {conversations?.map((el) => (
-          <div onClick={() => currentChatHandler(el)}>
+          <div key={el._id} onClick={() => currentChatHandler(el)}>
             <VideoConversation
               key={el._id}
               currentChat={currentChat}

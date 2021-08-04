@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { getMessages, sendMessage } from '../../../api/index'
-import socket from '../../../service/socket'
+import socket from '../../../socket/socket'
 
 import IconButton from '@material-ui/core/IconButton'
 import SendIcon from '@material-ui/icons/Send'
@@ -13,6 +13,7 @@ const MessageBox = ({ userId, currentChat }) => {
   const [arrivalMessage, setArrivalMessage] = useState(null)
   const scrollRef = useRef()
 
+  //when remote user sends a message
   useEffect(() => {
     socket.on('getMessage', (data) => {
       setArrivalMessage({
@@ -23,7 +24,9 @@ const MessageBox = ({ userId, currentChat }) => {
     })
   }, [])
 
+  //runs when a message is arrived & current chat is changed
   useEffect(() => {
+    //only to add message if sender is in current chat
     if (
       arrivalMessage &&
       currentChat?.members.includes(arrivalMessage.sender)
@@ -32,6 +35,7 @@ const MessageBox = ({ userId, currentChat }) => {
     }
   }, [arrivalMessage, currentChat])
 
+  //getting conversation messages
   useEffect(() => {
     const getConversationMessages = async () => {
       try {
@@ -49,12 +53,14 @@ const MessageBox = ({ userId, currentChat }) => {
   }, [messages])
 
   const handleSubmit = async () => {
+    //message body
     const message = {
       sender: userId,
       text: newMessage,
       conversationId: currentChat._id,
     }
 
+    //sending message to receiver through socket
     const receiverId = currentChat.members.find((member) => member !== userId)
     socket.emit('sendMessage', {
       senderId: userId,
@@ -63,6 +69,7 @@ const MessageBox = ({ userId, currentChat }) => {
     })
 
     try {
+      //sending message to receiver through mongodb
       const res = await sendMessage(message)
       setMessages([...messages, res.data])
     } catch (error) {
@@ -75,7 +82,7 @@ const MessageBox = ({ userId, currentChat }) => {
     <div className={classes.messageBox}>
       <div className={classes.messageBoxTop}>
         {messages.map((msg) => (
-          <div ref={scrollRef}>
+          <div key={msg._id} ref={scrollRef}>
             <Message message={msg} own={msg.sender === userId} />
           </div>
         ))}

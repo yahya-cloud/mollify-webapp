@@ -1,8 +1,7 @@
-import { v4 as uuidV4 } from 'uuid'
-
 import PatientModel from '../models/patient.js'
 import DoctorModel from '../models/doctor.js'
 import ConversationModel from '../models/conversation.js'
+import MessageModel from '../models/message.js'
 
 // @desc  Accept a session
 // @route POST/api/doctor/acceptSession
@@ -88,16 +87,17 @@ export const acceptSession = async (req, res) => {
 export const sessionFailed = async (req, res) => {
   try {
     const { _id: id, schedules } = req.user
-    const patientId = req.body.personId
+    const sessionId = req.body.sessionId
 
-    const { conversationId } = schedules.find((el) => el._id == patientId)
+    const { conversationId } = schedules.find((el) => el._id == sessionId)
 
     await ConversationModel.findByIdAndDelete(conversationId)
+    await MessageModel.deleteMany({ conversationId: conversationId })
 
     const result = await DoctorModel.findByIdAndUpdate(
       id,
       {
-        $pull: { schedules: { _id: patientId } },
+        $pull: { schedules: { _id: sessionId } },
         $inc: { 'sessions.failed': 1 },
       },
       { new: true }
@@ -121,6 +121,7 @@ export const sessionSucceed = async (req, res) => {
     const { conversationId } = schedules.find((el) => el._id == personId)
 
     await ConversationModel.findByIdAndDelete(conversationId)
+    await MessageModel.deleteMany({ conversationId: conversationId })
 
     const result = await DoctorModel.findOneAndUpdate(
       { _id: _id },

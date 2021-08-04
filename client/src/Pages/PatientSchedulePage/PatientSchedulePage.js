@@ -40,7 +40,7 @@ const PatientSchedulePage = () => {
     <>
       <Schedule user={user} greenBtnFunc={sessionCompleteHandler} />
       <Backdrop open={show} className={classes.backdrop}>
-        <RateCard btnFunc={submitRatingHandler} />
+        <RateCard closeForm={setShow} btnFunc={submitRatingHandler} />
       </Backdrop>
     </>
   )

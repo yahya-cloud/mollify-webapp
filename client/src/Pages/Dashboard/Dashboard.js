@@ -8,6 +8,7 @@ import Schedules from './Schedules/Schedules'
 import DoughnutCard from './DoughnutCard/Doughnut'
 import CardRequests from './CardRequests/CardRequests'
 import InfoCards from './InfoCards/InfoCards'
+import Meta from '../../components/Meta/Meta'
 
 const Dashboard = () => {
   const user = useSelector((state) => state.user)
@@ -20,6 +21,7 @@ const Dashboard = () => {
   }
   return (
     <div className='root'>
+      <Meta title='Mollify | Dashboard' />
       <Grid className='gridContainer' container spacing={4}>
         {/* info cards  */}
         <InfoCards

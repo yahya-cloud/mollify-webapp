@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Button } from '@material-ui/core'
-import { SocketContext } from '../../../../service/socket'
+import { SocketContext } from '../../../../socket/socket'
 
 import classes from './AnswerBtn.module.css'
 

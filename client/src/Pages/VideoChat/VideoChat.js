@@ -17,7 +17,7 @@ const VideoChat = () => {
 
   //when a user comes by clicking notification
   useEffect(() => {
-    const chat = conversations.find((el) => el.conversationId === chatId)
+    const chat = conversations.find((el) => el.conversationId == chatId)
     if (chat) {
       setCurrentChat(chat)
       setMe(true)

@@ -6,7 +6,7 @@ import { showLoader } from '../store/actions/modal'
 
 const SocketContext = createContext()
 
-const socket = io('ws://mollify-webapp.herokuapp.com')
+const socket = io(process.env.REACT_APP_SOCKET_URL)
 
 const ContextProvider = ({ children }) => {
   const [stream, setStream] = useState({})

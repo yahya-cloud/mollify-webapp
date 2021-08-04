@@ -49,10 +49,6 @@ const doctorSchema = mongoose.Schema({
   schedules: [
     {
       ...scheduleFields,
-      conversationId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'ConversationModel',
-      },
     },
   ],
   requests: [requestSchema],

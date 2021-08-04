@@ -24,9 +24,9 @@ const Navigate = (props) => {
 
   useEffect(() => {
     let map
-    mapboxgl.accessToken =
-      'pk.eyJ1IjoieWFoeWExMjMiLCJhIjoiY2tuOG8ydmc2MDV3ZTJwbXJyOHp3d2EzaCJ9.1gLWywSZj208OsijDUCE6A'
-    ;(async function () {
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+    
+    (async function () {
       try {
         const { coords } = await getCoordinates()
 

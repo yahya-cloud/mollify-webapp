@@ -1,6 +1,6 @@
 import * as axios from 'axios'
 
-const API = axios.create({ baseURL: 'https://mollify-webapp.herokuapp.com' })
+const API = axios.create({ baseURL: process.env.REACT_APP_API_URL })
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('userToken')) {

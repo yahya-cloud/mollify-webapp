@@ -44,16 +44,6 @@ const MobileNav = (props) => {
               <NavLink
                 onClick={() => props.mobileNavHandler()}
                 activeClassName='mobileNavItem--active'
-                to='/schedule'>
-                <ScheduleIcon className='mobileNav__icon' />
-                Schedule
-              </NavLink>
-            </div>
-
-            <div className='mobileNavItem'>
-              <NavLink
-                onClick={() => props.mobileNavHandler()}
-                activeClassName='mobileNavItem--active'
                 to='/patientRequest'>
                 <PeopleAltOutlinedIcon className='mobileNav__icon' />
                 Patient Request
@@ -93,7 +83,7 @@ const MobileNav = (props) => {
             Video Chat
           </NavLink>
         </div>
-        
+
         <div className='mobileNavItem'>
           <NavLink
             onClick={() => props.mobileNavHandler()}
@@ -101,6 +91,16 @@ const MobileNav = (props) => {
             to='/navigate/:personAddress'>
             <NavigationOutlinedIcon className='mobileNav__icon' />
             Navigation
+          </NavLink>
+        </div>
+        
+        <div className='mobileNavItem'>
+          <NavLink
+            onClick={() => props.mobileNavHandler()}
+            activeClassName='mobileNavItem--active'
+            to='/schedule'>
+            <ScheduleIcon className='mobileNav__icon' />
+            Schedule
           </NavLink>
         </div>
 

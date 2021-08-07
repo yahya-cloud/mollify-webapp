@@ -54,7 +54,6 @@ const ChatPanel = ({ currentChat, user }) => {
           <video
             id='userVideo'
             playsInline
-            muted={true}
             ref={userVideo}
             autoPlay
             className={`${classes.otherUserVideo}`}></video>

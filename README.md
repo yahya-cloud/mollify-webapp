@@ -4,41 +4,52 @@ This is MERN stack web application which connects people suffering from mental d
 
 ## Description
 
-·This web app facilitates people with registered psychologist's details such as price address etc so that users can schedule a session (home / clinic) as per his feasibility
+• This web app facilitates people with registered psychologist's details such as price address etc so that users can schedule a session (home, virtual, clinic) by their choice
 
-·Psychologist will receive details such as requested time, disorder etc, hence can accept or reject request according to scheduled calendar depending on the session booked already and location feasibility,
+• Psychologist gets the requests and can accept or reject it as per their schedule. A schedule table and calendar are provided on schedule page.
 
-·Once Psychologist has accepted the patient request then both have the facility to navigate to each other present location
+• If psychologist accepts the request. Both can now have message communication from the chat panel in the web-app. Accepted Session is also added in Calendar and schedule table on patient side.
 
-·Data driven Dashboard has been created to facilitate doctor to view information like completed session, earning etc
+• If virtual session was requested a tab is been generated with the photo of the each other on both the side in video conference page. After clicking the tab user have the option to place a video call.
 
-·Graphical representation of failed/successful session, daily schedule,rating & pending requests is also provided in the dashboard.
+• On the other side user is been notified about the incoming call hence he/she can pick it up.
 
-·Both Doctors and patients can update & delete their profile.
+• Both can navigate each other from their present location
+
+• According to the session succeed or failed, the data like total earnings, type of session, patient with disorder, rating etc is been updated
+
+•Patient now give their rating to the doctor with whom they had the session
 
 ## Technology Stack
 
-React.js, Exress.js, Node.js, Mongo DB, Redux, Chart.js for graphical representation,
-MapboxGl for integrating Map,Material UI, Heroku, Figma for designing website and styling Svg.
+- **Frontend**: React.js, MaterialUI, CSS, Chart.js, Redux, MapBoxGL
+- **Backend**: Express, Node.js, Socket.io, WebRTC
+- **IDE**: VS Code
+- **Design**: Figma
+- **Version Control**: Git and GitHub
+- **Database**: MongoDB
 
 ## Get Started
+
 Clone the app then in root folder install the dependencies
-```npm install```
+`npm install`
 
-then go to client folder and install dependencies 
-```cd client```
-```npm install```
+then go to client folder and install dependencies
+`cd client`
+`npm install`
 
-change the baseURL in client/api/index.js to
-```http://localhost:5000/```
-so as to direct all requests to your local backend server
+make a .env file with two fields
+`REACT_APP_API_URL`: 'your localhost backend server'
+`REACT_APP_SOCKET_URL`: 'ws:backend server'
+`REACT_APP_MAPBOX_TOKEN`: 'your mapBoxGl access token'
+
 
 come back to root folder and then go to server folder make a .env file with two fields
-```CONNECTION_URL```: 'your mongodb connection url'
-```SECRET```: 'any string value'
+`CONNECTION_URL`: 'your mongodb connection url'
+`SECRET`: 'any string value'
 
 then go to client folder and start the development server
-```npm run start```
+`npm run start`
 
 come back to root folder and start the backend server
-```npm run start```
+`npm run start`

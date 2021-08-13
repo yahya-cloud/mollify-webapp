@@ -38,15 +38,15 @@ then go to client folder and install dependencies
 `cd client`
 `npm install`
 
-make a .env file with two fields
-`REACT_APP_API_URL`: 'your localhost backend server'
-`REACT_APP_SOCKET_URL`: 'ws:backend server'
-`REACT_APP_MAPBOX_TOKEN`: 'your mapBoxGl access token'
+make a .env file with two fields <br/>
+`REACT_APP_API_URL`: 'your localhost backend server'<br/>
+`REACT_APP_SOCKET_URL`: 'ws:backend server'<br/>
+`REACT_APP_MAPBOX_TOKEN`: 'your mapBoxGl access token'<br/>
 
 
-come back to root folder and then go to server folder make a .env file with two fields
-`CONNECTION_URL`: 'your mongodb connection url'
-`SECRET`: 'any string value'
+come back to root folder and then go to server folder make a .env file with two <br/>
+`CONNECTION_URL`: 'your mongodb connection url'<br/>
+`SECRET`: 'any string value'<br/>
 
 then go to client folder and start the development server
 `npm run start`

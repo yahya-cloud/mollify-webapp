@@ -26,8 +26,8 @@ const StyledTableRow = withStyles((theme) => ({
   root: {},
 }))(TableRow)
 
-function createData(name, time, sessionType, disorder, photo, _id) {
-  return { name, time, sessionType, disorder, photo, _id }
+function createData(name, time, sessionType, disorder, photo, _id, email) {
+  return { name, time, sessionType, disorder, photo, _id, email }
 }
 
 const useStyles = makeStyles({
@@ -52,6 +52,7 @@ const useStyles = makeStyles({
 
 const ScheduleTable = (props) => {
   const classes = useStyles()
+
   const rows = props.rows.map((el) =>
     createData(
       el.name,
@@ -61,7 +62,8 @@ const ScheduleTable = (props) => {
       el.sessionType,
       el.disorder,
       el.photo,
-      el._id
+      el._id,
+      el.email
     )
   )
 

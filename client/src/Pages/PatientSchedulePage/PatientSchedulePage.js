@@ -14,12 +14,11 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const PatientSchedulePage = () => {
-  console.log('ran')
   const { user } = useSelector((state) => state)
 
   //to show rating  after submit
   const [show, setShow] = useState(false)
-  const [doctorData, setDoctorData] = useState()
+  const [doctorData, setDoctorData] = useState(null)
 
   const classes = useStyles()
   const dispatch = useDispatch()

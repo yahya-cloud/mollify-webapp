@@ -65,6 +65,8 @@ export const sessionCompleted = async (req, res) => {
     const { _id: patientId } = req.user
     const { userRating, doctorData } = req.body
     const { _id: scheduleId, email: doctorEmail } = doctorData
+    
+    console.log(doctorEmail)
 
     const { allRatings } = await DoctorModel.findOne(
       { email: doctorEmail },
@@ -75,7 +77,7 @@ export const sessionCompleted = async (req, res) => {
       allRatings,
       userRating
     )
- 
+
     await DoctorModel.findOneAndUpdate(
       { email: doctorEmail },
       { allRatings: updatedRatings, rating: updatedRating }

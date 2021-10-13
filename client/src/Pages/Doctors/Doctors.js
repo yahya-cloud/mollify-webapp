@@ -62,7 +62,10 @@ const Doctors = () => {
             greenBtnFunc={requestFormHandler}
           />
           <Backdrop open={show} className={classes.backdrop}>
-            <CardInputs closeForm={setShow} submitFunction={requestSessionHandler} />
+            <CardInputs
+              closeForm={setShow}
+              submitFunction={requestSessionHandler}
+            />
           </Backdrop>
         </>
       ) : null}

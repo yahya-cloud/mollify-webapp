@@ -6,6 +6,7 @@ export const requestSession = (user, doctor) => async (dispatch) => {
   const doctorId = doctor._id
 
   const reqParams = { user, doctorId }
+  console.log(reqParams)
   const data = await loaderFunction(reqParams, api.requestSession, dispatch)
   if (data) {
     dispatch({ type: SHOWLOADER, payload: data.message })

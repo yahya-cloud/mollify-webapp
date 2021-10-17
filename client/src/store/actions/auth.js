@@ -1,6 +1,6 @@
 import * as api from '../../api/index'
 import { USER, LOGOUT, SHOWLOADER } from './actionTypes'
-import { loaderFunction } from '../Utility'
+import { loaderFunction } from '../../utils/loaderFunction'
 
 //if condition in every function because loaderFuntion will not return data if there's error
 export const signIn = (formData) => async (dispatch) => {

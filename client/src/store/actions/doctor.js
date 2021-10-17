@@ -1,5 +1,5 @@
 import * as api from '../../api/index'
-import { loaderFunction } from '../Utility'
+import { loaderFunction } from '../../utils/loaderFunction'
 import { USER } from './actionTypes'
 
 export const acceptRequest = (user, person) => async (dispatch) => {

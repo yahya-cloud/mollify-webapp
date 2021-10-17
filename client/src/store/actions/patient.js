@@ -1,6 +1,6 @@
 import * as api from '../../api/index'
 import { SHOWLOADER, USER } from './actionTypes'
-import { loaderFunction } from '../Utility'
+import { loaderFunction } from '../../utils/loaderFunction'
 
 export const requestSession = (user, doctor) => async (dispatch) => {
   const doctorId = doctor._id

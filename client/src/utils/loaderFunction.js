@@ -1,4 +1,4 @@
-import { SHOWLOADER, HIDELOADER } from './actions/actionTypes'
+import { SHOWLOADER, HIDELOADER } from '../store/actions/actionTypes'
 
 export const loaderFunction = async (params, apiCall, dispatch) => {
   try {
@@ -9,5 +9,6 @@ export const loaderFunction = async (params, apiCall, dispatch) => {
   } catch (error) {
     const errMessage = error.response?.data?.message
     dispatch({ type: SHOWLOADER, payload: errMessage })
+    return
   }
 }

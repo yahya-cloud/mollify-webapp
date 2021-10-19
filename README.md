@@ -23,7 +23,7 @@ This is MERN stack web application which connects people suffering from mental d
 ## Technology Stack
 
 - **Frontend**: React.js, MaterialUI, CSS, Chart.js, Redux, MapBoxGL
-- **Backend**: Express, Node.js, Socket.io, SimplePeer
+- **Backend**: Express, Node.js, Socket.io, PeerJs
 - **IDE**: VS Code
 - **Design**: Figma
 - **Version Control**: Git and GitHub

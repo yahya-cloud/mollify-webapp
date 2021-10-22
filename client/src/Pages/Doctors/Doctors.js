@@ -39,7 +39,7 @@ const Doctors = () => {
     dispatch(requestSession(userData, data))
   }
 
-  //api call to show all doctors
+  //api call to get all doctors
   useEffect(() => {
     ;(async function getDoctors() {
       dispatch({ type: SHOWLOADER })
@@ -57,7 +57,6 @@ const Doctors = () => {
           <GridContainer
             cardArray={doctors}
             userType='patient'
-            showInputs={true}
             greenBtnTxt='Request Session'
             greenBtnFunc={requestFormHandler}
           />

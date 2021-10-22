@@ -10,6 +10,7 @@ const Schedules = () => {
   const [width, setWidth] = useState(window.innerWidth)
   const dispatch = useDispatch()
 
+  //calculating width if 600 < hide session type
   useEffect(() => {
     function handelResize() {
       if (width > 600) {

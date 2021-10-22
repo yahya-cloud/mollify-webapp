@@ -21,7 +21,6 @@ const GridContainer = (props) => {
               return (
                 <Card
                   key={el._id}
-                  showInputs={props.showInputs}
                   person={el}
                   navigate={navigate}
                   userType={props.userType}

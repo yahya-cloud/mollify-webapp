@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { getUserConversation } from '../../api/index'
-
+import { getConversation } from '../../utils/conversationUtils'
 import Conversation from './Conversation/Conversation'
 import MessageBox from './MessageBox/MessageBox'
 import SelectChat from '../../components/UI/SelectChat/SelectChat'
@@ -16,15 +15,7 @@ const Chat = (props) => {
 
   //fetch user conversation when page mounts
   useEffect(() => {
-    const getConversation = async () => {
-      try {
-        const res = await getUserConversation()
-        setConversations(res.data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getConversation()
+    getConversation(setConversations)
   }, [])
 
   return (
@@ -48,7 +39,6 @@ const Chat = (props) => {
           <MessageBox
             currentChat={currentChat}
             userId={currentUserId}
-            socket={props.socket}
           />
         ) : (
           <SelectChat text='Select a Conversation' />

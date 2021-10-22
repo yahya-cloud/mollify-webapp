@@ -18,7 +18,6 @@ const MessageBox = ({ userId, currentChat }) => {
   const scrollRef = useRef()
   const receiverId = currentChat.members.find(el => el !== userId)
  
-
   //when remote user sends a message
   useEffect(() => {
     setArrivalMessageEvent(setArrivalMessage)

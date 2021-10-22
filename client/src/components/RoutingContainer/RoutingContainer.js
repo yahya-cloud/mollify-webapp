@@ -14,7 +14,7 @@ import Chat from '../../Pages/Chat/Chat'
 import PatientSchedulePage from '../../Pages/PatientSchedulePage/PatientSchedulePage'
 import VideoChat from '../../Pages/VideoChat/VideoChat'
 
-// function to show doctor/ patient pages conditionally
+
 const RoutingContainer = (props) => {
   let pages = null
 
@@ -26,9 +26,11 @@ const RoutingContainer = (props) => {
           <Route path='/patientRequest'>
             <PatientRequests />
           </Route>
+          
           <Route path='/schedule'>
             <DoctorSchedulePage />
           </Route>
+
           <Route path='/'>
             <Dashboard />
           </Route>
@@ -42,9 +44,11 @@ const RoutingContainer = (props) => {
           <Route path='/acceptedRequests'>
             <AcceptedRequests />
           </Route>
+
           <Route path='/schedule'>
             <PatientSchedulePage />
           </Route>
+          
           <Route path='/'>
             <Doctors />
           </Route>
@@ -59,9 +63,11 @@ const RoutingContainer = (props) => {
         <Route path='/settings'>
           <SettingsPage />
         </Route>
+        
         <Route path='/ourWorking'>
           <OurWorking />
         </Route>
+
         <Route path='/navigate/:personAddress'>
           <Navigate />
         </Route>

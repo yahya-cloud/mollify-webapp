@@ -169,7 +169,7 @@ export const getOtherUser = async (req, res) => {
       ? PatientModel
       : DoctorModel
     ).findById(userId)
-
+          
     res.json({ name: user.name, photo: user.photo })
   } catch (error) {
     console.log(error)

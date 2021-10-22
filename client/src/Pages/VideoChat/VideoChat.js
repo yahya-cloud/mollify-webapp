@@ -30,6 +30,7 @@ const VideoChat = () => {
     setCurrentChat(el)
     setMe(true)
   }
+  
   return (
     <div className={classes.chatContainer}>
       <Meta title='Mollify | Video Conferences ' />

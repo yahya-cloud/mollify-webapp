@@ -66,8 +66,7 @@ export const sessionCompleted = async (req, res) => {
     const { userRating, doctorData } = req.body
     const { _id: scheduleId, email: doctorEmail } = doctorData
     
-    console.log(doctorEmail)
-
+    
     const { allRatings } = await DoctorModel.findOne(
       { email: doctorEmail },
       'allRatings'

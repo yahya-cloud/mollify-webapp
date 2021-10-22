@@ -18,6 +18,7 @@ const app = express()
 const PORT = process.env.PORT || 5000
 const server = http.Server(app)
 
+//frontend is origin
 const io = new Server(server, {
   cors: { origin: process.env.SOCKET_IO_ORIGIN },
 })

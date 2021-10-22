@@ -19,8 +19,7 @@ export const signUp = (formData) => async (dispatch) => {
   }
 }
 
-export const logOut = (history) => {
-  history.push('/')
+export const logOut = () => {
   localStorage.clear()
   return { type: LOGOUT }
 }

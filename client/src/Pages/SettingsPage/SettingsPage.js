@@ -47,6 +47,8 @@ const SettingsPage = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault()
     let userData = {}
+    
+    //building object
     for (let key in inputData) {
       userData[key] = inputData[key].value
     }

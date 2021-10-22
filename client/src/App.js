@@ -28,7 +28,8 @@ const App = () => {
     if (token) {
       const decodedToken = decode(token)
       if (decodedToken.exp * 1000 < new Date().getTime()) {
-        dispatch(logOut(history))
+        dispatch(logOut())
+        history.push('/')
       } else {
         dispatch(getUser())
       }

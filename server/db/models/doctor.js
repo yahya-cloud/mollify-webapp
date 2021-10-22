@@ -1,15 +1,15 @@
 import mongoose from 'mongoose'
-import { commonFields, number, scheduleFields } from './common.js'
+import { commonFields, number, string, scheduleFields } from './common.js'
 
 const requestSchema = mongoose.Schema({
   photo: String,
-  name: { type: String, required: true, default: undefined },
-  address: { type: String, required: true },
-  email: { type: String, required: true },
-  phoneNumber: { type: String, required: true },
-  sessionType: { type: String, required: true },
-  disorder: { type: String, required: true },
-  gender: { type: String, required: true },
+  name: { type: String, required: true},
+  address: string,
+  email: string,
+  phoneNumber: string,
+  sessionType: string,
+  disorder: string,
+  gender: string,
   time: { type: Date, required: true },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -21,8 +21,8 @@ const requestSchema = mongoose.Schema({
 // DOCTOR SCHEMA
 const doctorSchema = mongoose.Schema({
   ...commonFields,
-  password: { type: String, required: true },
-  price: { type: String, required: true },
+  password: string,
+  price: string,
   earnings: number,
   rating: number,
   allRatings: {

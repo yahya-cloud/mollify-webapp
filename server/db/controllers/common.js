@@ -2,6 +2,7 @@ import PatientModel from '../models/patient.js'
 import DoctorModel from '../models/doctor.js'
 import mongoose from 'mongoose'
 
+//using email instead of id because signUp
 export const searchModels = async (email) => {
   try {
     let person

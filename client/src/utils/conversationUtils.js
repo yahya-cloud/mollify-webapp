@@ -43,3 +43,12 @@ export async function sendMessage(messageBody, receiverId, setMessages) {
     console.log(error)
   }
 }
+
+export const getConversation = async (setConversations) => {
+  try {
+    const res = await api.getUserConversation()
+    setConversations(res.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
